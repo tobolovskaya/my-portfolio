@@ -1,8 +1,15 @@
+import { motion } from 'framer-motion';
+
 export default function Home() {
   return (
-    <section className="p-10" data-aos="fade-up">
-      <h1 className="text-4xl font-bold text-purple">Welcome 👋</h1>
-      <p className="mt-4 text-gray-300">This is a modern portfolio built with Vite + React + TailwindCSS.</p>
-    </section>
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+    >
+      <h1 className="text-purple-500 text-3xl font-bold">Welcome 👋</h1>
+      <p>This is a modern portfolio...</p>
+    </motion.div>
   );
 }
+
