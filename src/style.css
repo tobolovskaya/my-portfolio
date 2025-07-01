@@ -397,6 +397,11 @@ button:focus {
   color: #700c86 !important;
 }
 
+.touch-target {
+  display: inline-block;
+}
+
+
 
 /* --------- */
 /* Developer Card */
