@@ -25,14 +25,19 @@ function Home() {
                 <strong className="main-name"> Yevheniia Tobolovska</strong>
               </h1>
 
-              <div style={{ padding: 50, textAlign: "left" }}>
-                <Type />
-              </div>
+                <p className="home-about-body">
+                  Front-End & Full-Stack Developer
+                  <br />
+                  Web & UI/UX Design
+                  <br />
+                  Microsoft Intune & IT System Administration
+                </p>
+                
             </Col>
-
             
             <Col md={5} style={{ paddingBottom: 20 }}>
-            <Developer />
+            <Developer/>
+
             </Col>
           </Row>
         </Container>
