@@ -3,29 +3,21 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { motion } from "framer-motion";
 
+const MotionButton = motion(Button);
+
 function ViewProjectsButton() {
   return (
-    <motion.div
+    <MotionButton
+      as={Link}
+      to="/projects"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className="touch-target"
+      variant="primary"
+      className="min-w-[120px] py-3 text-base view-projects-btn"
+      aria-label="Go to projects section"
     >
-      <Link to="/projects" style={{ textDecoration: "none" }}>
-        <Button
-          variant="primary"
-          className="min-w-[120px] py-3 text-base"
-          aria-label="Go to projects section"
-          style={{
-            padding: "10px 20px",
-            fontSize: "1rem",
-            cursor: "pointer",
-            transition: "all 0.3s ease-in-out",
-          }}
-        >
-          View Projects
-        </Button>
-      </Link>
-    </motion.div>
+      View Projects
+    </MotionButton>
   );
 }
 
