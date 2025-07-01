@@ -32,6 +32,12 @@ function Home() {
                   <br />
                   Microsoft Intune & IT System Administration
                 </p>
+
+                <a href="#projects" aria-label="Go to projects section">
+                  <button className="btn btn-outline-primary project-button">
+                    View Projects
+                  </button>
+                </a>
                 
             </Col>
             
