@@ -1,8 +1,10 @@
 import React from "react";
-import { Container, Row, Col} from "react-bootstrap";
-import ViewProjectsButton from "./ViewProjectsButton";
-import Home2 from "./Home2";
+import { Container, Row, Col } from "react-bootstrap";
 import Developer from "./Developer";
+import ViewProjectsButton from "./ViewProjectsButton";
+import FindMeOn from "./Findmeon";
+import Home2 from "./Home2";
+import Github from "./Github";
 
 function Home() {
   return (
@@ -34,17 +36,18 @@ function Home() {
 
                 {/* Projects Button using react-router */}
               <ViewProjectsButton />
-                
+              <FindMeOn />
+              
             </Col>
             
             <Col md={5} style={{ paddingBottom: 20 }}>
             <Developer/>
-
             </Col>
           </Row>
         </Container>
       </Container>
       <Home2 />
+      <Github />
     </section>
   );
 }
