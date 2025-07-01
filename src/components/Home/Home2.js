@@ -2,6 +2,11 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import myImg from "../../Assets/avatar.svg";
 import Tilt from "react-parallax-tilt";
+import { AiOutlineCheck } from "react-icons/ai";
+import { FaRocket, FaPalette } from "react-icons/fa";
+import { GoLocation } from "react-icons/go";
+import { MdComputer } from "react-icons/md";
+
 import {
   AiFillGithub,
   AiOutlineTwitter,
@@ -19,37 +24,31 @@ function Home2() {
               LET ME <span className="purple"> INTRODUCE </span> MYSELF
             </h1>
             <p className="home-about-body">
-              I fell in love with programming and I have at least learnt
-              something, I think… 🤷‍♂️
-              <br />
-              <br />I am fluent in classics like
-              <i>
-                <b className="purple"> C++, Javascript and Go. </b>
-              </i>
+              <MdComputer style={{ marginRight: "6px" }} />
+              I specialize in building responsive, user-friendly web and mobile interfaces using modern technologies.
               <br />
               <br />
-              My field of Interest's are building new &nbsp;
-              <i>
-                <b className="purple">Web Technologies and Products </b> and
-                also in areas related to{" "}
-                <b className="purple">
-                  Blockchain.
-                </b>
-              </i>
+              🔧 <b className="purple">Tech stack:</b>
+              <br />
+              <AiOutlineCheck style={{ marginRight: "6px" }} /> HTML5, CSS3, JavaScript
+              <br />
+              <AiOutlineCheck style={{ marginRight: "6px" }} /> React, React Native, Redux
+              <br />
+              <AiOutlineCheck style={{ marginRight: "6px" }} /> Figma, Adobe (UI/UX design)
+              <br />
+              <AiOutlineCheck style={{ marginRight: "6px" }} /> Git, GitHub, REST APIs
               <br />
               <br />
-              Whenever possible, I also apply my passion for developing products
-              with <b className="purple">Node.js</b> and
-              <i>
-                <b className="purple">
-                  {" "}
-                  Modern Javascript Library and Frameworks
-                </b>
-              </i>
-              &nbsp; like
-              <i>
-                <b className="purple"> React.js and Next.js</b>
-              </i>
+              <FaPalette style={{ marginRight: "6px" }} />
+              I'm passionate about clean design, intuitive user experiences, and continuous learning in the tech industry.
+              <br />
+              <br />
+              <GoLocation style={{ marginRight: "6px" }} />
+              Based in <b className="purple">Norway</b> | Open to <b className="purple">remote opportunities</b> and collaborations.
+              <br />
+              <br />
+              <FaRocket style={{ marginRight: "6px" }} />
+              Looking forward to connecting and exploring the tech world together!
             </p>
           </Col>
           <Col md={4} className="myAvtar">
