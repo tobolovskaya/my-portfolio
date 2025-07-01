@@ -28,17 +28,6 @@ function Home2() {
               I specialize in building responsive, user-friendly web and mobile interfaces using modern technologies.
               <br />
               <br />
-              🔧 <b className="purple">Tech stack:</b>
-              <br />
-              <AiOutlineCheck style={{ marginRight: "6px" }} /> HTML5, CSS3, JavaScript
-              <br />
-              <AiOutlineCheck style={{ marginRight: "6px" }} /> React, React Native, Redux
-              <br />
-              <AiOutlineCheck style={{ marginRight: "6px" }} /> Figma, Adobe (UI/UX design)
-              <br />
-              <AiOutlineCheck style={{ marginRight: "6px" }} /> Git, GitHub, REST APIs
-              <br />
-              <br />
               <FaPalette style={{ marginRight: "6px" }} />
               I'm passionate about clean design, intuitive user experiences, and continuous learning in the tech industry.
               <br />
