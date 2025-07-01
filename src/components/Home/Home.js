@@ -34,10 +34,11 @@ function Home() {
                   Microsoft Intune & IT System Administration
                 </p>
 
-                {/* Projects Button using react-router */}
+              {/* Projects Button using react-router */}
+              <div className="home-action-row">
               <ViewProjectsButton />
               <FindMeOn />
-              
+              </div>
             </Col>
             
             <Col md={5} style={{ paddingBottom: 20 }}>
