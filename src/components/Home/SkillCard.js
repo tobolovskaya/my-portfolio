@@ -17,7 +17,7 @@ const skillItemVariants = {
 function SkillCard({ category, itemVariants, containerVariants }) {
   return (
     <motion.div
-      className="bg-card rounded-lg p-4 shadow-sm border border-border w-100 hover:border-[#c084f5] transition-colors"
+      className="bg-card rounded-lg p-4 shadow-sm border border-border w-100 hover:border-[#c084f5] transition-colors border"
       variants={itemVariants}
       whileHover={{
         y: -5,
