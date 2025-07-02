@@ -29,6 +29,6 @@ export const skillCategories = [
   {
     name: "Design",
     icon: Palette,
-    skills: ["Figma", "Adobe AI", "UI/UX Design", "Wireframing", "Prototyping"],
+    skills: ["Figma", "Adobe AI", "UI/UX Design", "Wireframing"],
   },
 ];

@@ -51,7 +51,7 @@ const SkillsSection = () => {
           from frontend to backend and everything in between.
         </motion.p>
 
-        <Row className="justify-content-center">
+        <Row style={{ justifyContent: "center", width: "100%"}} className="skills-container"> 
           {skillCategories.map((category) => (
             <Col
               key={category.name}
