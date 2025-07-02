@@ -44,16 +44,17 @@ function SkillCard({ category, itemVariants, containerVariants }) {
       >
         {category.skills.map((skill) => (
           <motion.span
-            key={skill}
-            className="px-3 py-1 bg-background border border-border rounded-pill text-sm me-2 mb-2"
+            key={skill.name}
+            className="px-3 py-1 bg-background border border-border rounded-pill text-sm me-2 mb-2 d-flex align-items-center gap-2"
             variants={skillItemVariants}
             whileHover={{
               scale: 1.05,
-              backgroundColor: "rgba(192, 132, 245, 0.05)", // Fixed color
+              backgroundColor: "rgba(128, 90, 213, 0.05)",
             }}
             whileTap={{ scale: 0.98 }}
           >
-            {skill}
+            <skill.icon size={16} />
+            {skill.name}
           </motion.span>
         ))}
       </motion.div>
