@@ -53,7 +53,7 @@ function SkillCard({ category, itemVariants, containerVariants }) {
             }}
             whileTap={{ scale: 0.98 }}
           >
-            <skill.icon size={16} />
+            {skill.icon && <skill.icon size={16} />}
             {skill.name}
           </motion.span>
         ))}

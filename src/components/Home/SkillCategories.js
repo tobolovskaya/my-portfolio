@@ -16,7 +16,11 @@ import {
   SiFigma,
   SiReactrouter,
   SiPostman,
-  SiScrumalliance,
+  SiBootstrap,
+  SiDocker,
+  SiAmazonaws as SiAWS,
+  SiMicrosoftazure as SiAzure,
+  SiMaterialdesign
 } from "react-icons/si";
 
 
@@ -39,6 +43,7 @@ export const skillCategories = [
       { name: "React Native", icon: SiReactrouter },
       { name: "Next.js", icon: SiNextdotjs },
       { name: "Tailwind CSS", icon: SiTailwindcss },
+      { name: "Bootstrap", icon: SiBootstrap },
     ],
   },
   {
@@ -64,7 +69,9 @@ export const skillCategories = [
     icon: Cpu,
     skills: [
       { name: "Git", icon: SiGit },
-      { name: "Agile/Scrum", icon: SiScrumalliance },
+      { name: "Docker", icon: SiDocker },
+      { name: "AWS", icon: SiAWS },
+      { name: "Azure", icon: SiAzure },
     ],
   },
   {
@@ -72,7 +79,7 @@ export const skillCategories = [
     icon: Palette,
     skills: [
       { name: "Figma", icon: SiFigma },
-      { name: "UI/UX Design" },
+      { name: "UI/UX Design", icon: SiMaterialdesign },
       { name: "Wireframing" },
     ],
   },
