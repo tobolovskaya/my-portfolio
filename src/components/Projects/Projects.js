@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
-import leaf from "../../Assets/Projects/leaf.png";
+import energy from "../../Assets/Projects/energy.png";
 import emotion from "../../Assets/Projects/emotion.png";
 import foodies from "../../Assets/Projects/foodies.png";
 import TravelTrucks from "../../Assets/Projects/TravelTrucks.png";
@@ -37,7 +37,7 @@ function Projects() {
               imgPath={EnglishWebsite}
               isBlog={false}
               title="English-Website"
-              description="This is a website for learning English."
+              description="This is a website for learning English. It includes a variety of resources such as articles, exercises, and quizzes to help users improve their English language skills. The website is designed to be user-friendly and accessible, making it easy for learners of all levels to navigate and find the materials they need."
               ghLink="https://github.com/tobolovskaya/English-Website"
               demoLink="https://tobolovskaya.github.io/English-Website/"
             />
@@ -52,19 +52,17 @@ function Projects() {
               The platform is structured into two separate repositories:
 backend/ REST API server with authentication, PostgreSQL database, and media uploads;
 frontend/ Modern SPA with intuitive UI, animations, and responsive design. "
-              ghLink="https://github.com/tobolovskaya/foodies-app"
-              demoLink="/"              
+              ghLink="https://github.com/tobolovskaya/foodies-app"              
             />
           </Col>
 
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={leaf}
+              imgPath={energy}
               isBlog={false}
-              title="Plant AI"
-              description="Used the plant disease dataset from Kaggle and trained a image classifer model using 'PyTorch' framework using CNN and Transfer Learning with 38 classes of various plant leaves. The model was successfully able to detect diseased and healthy leaves of 14 unique plants. I was able to achieve an accuracy of 98% by using Resnet34 pretrained model."
-              ghLink="https://github.com/soumyajit4419/Plant_AI"
-              demoLink="https://plant49-ai.herokuapp.com/"
+              title="Your Energy"
+              description="Your Energy is a web application that allows users to track their energy consumption and production, providing insights into their energy usage patterns. The app features a user-friendly interface for monitoring energy data, setting goals, and receiving recommendations for optimizing energy efficiency."
+              ghLink="https://github.com/tobolovskaya/your-energy"
             />
           </Col>
 
