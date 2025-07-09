@@ -48,7 +48,10 @@ function Projects() {
               imgPath={foodies}
               isBlog={false}
               title="Foodies-App"
-              description="Online code and markdown editor build with react.js. Online Editor which supports html, css, and js code with instant view of website. Online markdown editor for building README file which supports GFM, Custom Html tags with toolbar and instant preview.Both the editor supports auto save of work using Local Storage"
+              description="Foodies is a full-featured platform for culinary enthusiasts, empowering users to discover, create, save, and share delicious recipes. Whether you're a home cook or a professional chef, Foodies brings the culinary community together. 
+              The platform is structured into two separate repositories:
+backend/ REST API server with authentication, PostgreSQL database, and media uploads;
+frontend/ Modern SPA with intuitive UI, animations, and responsive design. "
               ghLink="https://github.com/tobolovskaya/foodies-app"
               demoLink="/"              
             />
