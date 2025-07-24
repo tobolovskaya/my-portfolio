@@ -6,7 +6,7 @@ import energy from "../../Assets/Projects/energy.png";
 import emotion from "../../Assets/Projects/emotion.png";
 import foodies from "../../Assets/Projects/foodies.png";
 import TravelTrucks from "../../Assets/Projects/TravelTrucks.png";
-import calculator from "../../Assets/Projects/calculator.jpg";
+import calculator from "../../Assets/Projects/calculator.png";
 import EnglishWebsite from "../../Assets/Projects/English-Website.png";
 
 function Projects() {
