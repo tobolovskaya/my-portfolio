@@ -5,6 +5,7 @@ import ViewProjectsButton from "./ViewProjectsButton";
 import FindMeOn from "./Findmeon";
 import Home2 from "./Home2";
 import Github from "./Github";
+import SkillsSection from "./SkillsSection";
 
 function Home() {
   return (
@@ -49,6 +50,7 @@ function Home() {
       </Container>
       <Home2 />
       <Github />
+      <SkillsSection />
     </section>
   );
 }

@@ -2,12 +2,12 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
-import leaf from "../../Assets/Projects/leaf.png";
+import energy from "../../Assets/Projects/energy.png";
 import emotion from "../../Assets/Projects/emotion.png";
-import editor from "../../Assets/Projects/codeEditor.png";
-import chatify from "../../Assets/Projects/chatify.png";
+import foodies from "../../Assets/Projects/foodies.png";
+import TravelTrucks from "../../Assets/Projects/TravelTrucks.png";
 import suicide from "../../Assets/Projects/suicide.png";
-import bitsOfCode from "../../Assets/Projects/blog.png";
+import EnglishWebsite from "../../Assets/Projects/English-Website.png";
 
 function Projects() {
   return (
@@ -23,45 +23,46 @@ function Projects() {
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={chatify}
+              imgPath={TravelTrucks}
               isBlog={false}
-              title="Chatify"
-              description="Personal Chat Room or Workspace to share resources and hangout with friends build with react.js, Material-UI, and Firebase. Have features which allows user for realtime messaging, image sharing as well as supports reactions on messages."
-              ghLink="https://github.com/soumyajit4419/Chatify"
-              demoLink="https://chatify-49.web.app/"
+              title="TravelTrucks"
+              description="TravelTrucks is a web application for renting campers, allowing users to browse all available vehicles, filter by specific criteria, and view detailed information for each camper."
+              ghLink="https://github.com/tobolovskaya/TravelTrucks"
+              demoLink="https://travel-trucks-red-six.vercel.app/"
             />
           </Col>
 
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={bitsOfCode}
+              imgPath={EnglishWebsite}
               isBlog={false}
-              title="Bits-0f-C0de"
-              description="My personal blog page build with Next.js and Tailwind Css which takes the content from makdown files and renders it using Next.js. Supports dark mode and easy to write blogs using markdown."
-              ghLink="https://github.com/soumyajit4419/Bits-0f-C0de"
-              demoLink="https://blogs.soumya-jit.tech/"
+              title="English-Website"
+              description="This is a website for learning English. It includes a variety of resources such as articles, exercises, and quizzes to help users improve their English language skills. The website is designed to be user-friendly and accessible, making it easy for learners of all levels to navigate and find the materials they need."
+              ghLink="https://github.com/tobolovskaya/English-Website"
+              demoLink="https://tobolovskaya.github.io/English-Website/"
             />
           </Col>
 
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={editor}
+              imgPath={foodies}
               isBlog={false}
-              title="Editor.io"
-              description="Online code and markdown editor build with react.js. Online Editor which supports html, css, and js code with instant view of website. Online markdown editor for building README file which supports GFM, Custom Html tags with toolbar and instant preview.Both the editor supports auto save of work using Local Storage"
-              ghLink="https://github.com/soumyajit4419/Editor.io"
-              demoLink="https://editor.soumya-jit.tech/"              
+              title="Foodies-App"
+              description="Foodies is a full-featured platform for culinary enthusiasts, empowering users to discover, create, save, and share delicious recipes. Whether you're a home cook or a professional chef, Foodies brings the culinary community together. 
+              The platform is structured into two separate repositories:
+backend/ REST API server with authentication, PostgreSQL database, and media uploads;
+frontend/ Modern SPA with intuitive UI, animations, and responsive design. "
+              ghLink="https://github.com/tobolovskaya/foodies-app"              
             />
           </Col>
 
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={leaf}
+              imgPath={energy}
               isBlog={false}
-              title="Plant AI"
-              description="Used the plant disease dataset from Kaggle and trained a image classifer model using 'PyTorch' framework using CNN and Transfer Learning with 38 classes of various plant leaves. The model was successfully able to detect diseased and healthy leaves of 14 unique plants. I was able to achieve an accuracy of 98% by using Resnet34 pretrained model."
-              ghLink="https://github.com/soumyajit4419/Plant_AI"
-              demoLink="https://plant49-ai.herokuapp.com/"
+              title="Your Energy"
+              description="Your Energy is a web application that allows users to track their energy consumption and production, providing insights into their energy usage patterns. The app features a user-friendly interface for monitoring energy data, setting goals, and receiving recommendations for optimizing energy efficiency."
+              ghLink="https://github.com/tobolovskaya/your-energy"
             />
           </Col>
 
