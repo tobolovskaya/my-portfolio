@@ -6,7 +6,7 @@ import energy from "../../Assets/Projects/energy.png";
 import emotion from "../../Assets/Projects/emotion.png";
 import foodies from "../../Assets/Projects/foodies.png";
 import TravelTrucks from "../../Assets/Projects/TravelTrucks.png";
-import suicide from "../../Assets/Projects/suicide.png";
+import calculator from "../../Assets/Projects/calculator.jpg";
 import EnglishWebsite from "../../Assets/Projects/English-Website.png";
 
 function Projects() {
@@ -68,11 +68,12 @@ frontend/ Modern SPA with intuitive UI, animations, and responsive design. "
 
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={suicide}
+              imgPath={calculator}
               isBlog={false}
-              title="Ai For Social Good"
-              description="Using 'Natural Launguage Processing' for the detection of suicide-related posts and user's suicide ideation in cyberspace  and thus helping in sucide prevention."
-              ghLink="https://github.com/soumyajit4419/AI_For_Social_Good"
+              title="Calculator"
+              description="Modern Calculator with History. This is a modern calculator built with HTML, CSS, and JavaScript."
+              ghLink="https://github.com/tobolovskaya/Calculator"
+              demoLink="https://tobolovskaya.github.io/Calculator/"
             />
           </Col>
 
