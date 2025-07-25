@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
 import energy from "../../Assets/Projects/energy.png";
-import emotion from "../../Assets/Projects/emotion.png";
+import BMICalculator from "../../Assets/Projects/BMICalculator.png";
 import foodies from "../../Assets/Projects/foodies.png";
 import TravelTrucks from "../../Assets/Projects/TravelTrucks.png";
 import calculator from "../../Assets/Projects/calculator.png";
@@ -79,13 +79,18 @@ frontend/ Modern SPA with intuitive UI, animations, and responsive design. "
 
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={emotion}
+              imgPath={BMICalculator}
               isBlog={false}
-              title="Face Recognition and Emotion Detection"
-              description="Trained a CNN classifier using 'FER-2013 dataset' with Keras and tensorflow backened. The classifier sucessfully predicted the various types of emotions of human. And the highest accuracy obtained with the model was 60.1%.
-              Then used Open-CV to detect the face in an image and then pass the face to the classifer to predict the emotion of a person."
-              ghLink="https://github.com/soumyajit4419/Face_And_Emotion_Detection"
-              // demoLink="https://blogs.soumya-jit.tech/"      <--------Please include a demo link here 
+              title="Advanced BMI Calculator"
+              description="This is a modern BMI Calculator built using:
+                    HTML — for structuring the form and layout
+                    CSS — for styling, dark mode, and responsive design
+                    JavaScript — for BMI calculation logic and dynamic UI updates
+                    Theme Toggle — switch between light and dark modes
+                    BMI Scale — colorful horizontal indicator for BMI categories
+                    History Log — stores previous calculations in a scrollable list"
+              ghLink="https://github.com/tobolovskaya/BMI-Calculator"
+              demoLink="https://tobolovskaya.github.io/BMI-Calculator/"
             />
           </Col>
         </Row>
