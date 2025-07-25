@@ -83,12 +83,12 @@ frontend/ Modern SPA with intuitive UI, animations, and responsive design. "
               isBlog={false}
               title="Advanced BMI Calculator"
               description="This is a modern BMI Calculator built using:
-                    HTML — for structuring the form and layout
-                    CSS — for styling, dark mode, and responsive design
-                    JavaScript — for BMI calculation logic and dynamic UI updates
-                    Theme Toggle — switch between light and dark modes
-                    BMI Scale — colorful horizontal indicator for BMI categories
-                    History Log — stores previous calculations in a scrollable list"
+                    *HTML — for structuring the form and layout
+                    *CSS — for styling, dark mode, and responsive design
+                    *JavaScript — for BMI calculation logic and dynamic UI updates
+                    *Theme Toggle — switch between light and dark modes
+                    *BMI Scale — colorful horizontal indicator for BMI categories
+                    *History Log — stores previous calculations in a scrollable list"
               ghLink="https://github.com/tobolovskaya/BMI-Calculator"
               demoLink="https://tobolovskaya.github.io/BMI-Calculator/"
             />
