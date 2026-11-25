@@ -149,7 +149,7 @@ export const frontEnd = [
   },
   {
     title: "Your Energy",
-    text: "Track energy consumption and production, with goals and insights into usage patterns.",
+    text: "Fitness app: browse exercises by muscle group, body part and equipment, and save favourites.",
     img: energy,
     repo: "https://github.com/tobolovskaya/your-energy",
   },
