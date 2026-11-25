@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import contours from "./assets/contours.svg?raw";
+import ridge from "./assets/ridge.svg?raw";
 import { links, tracks, hardeningLog, labs, builds, frontEnd, skills } from "./data.js";
 
 function useReveal() {
@@ -138,82 +139,91 @@ export default function App() {
           </div>
         </section>
 
-        {/* Labs: snow */}
-        <section className="snow" id="labs" aria-labelledby="labs-title">
-          <div className="wrap">
-            <h2 id="labs-title" className="title" data-reveal>Security labs</h2>
-            <p className="intro" data-reveal>
-              Coursework from my MSc in Computer Science, where the job was to find what breaks.
-            </p>
-            <div className="labs">
-              {labs.map((l) => (
-                <article key={l.title} className="lab" data-reveal>
-                  <h3>{l.title}</h3>
-                  <p>{l.text}</p>
-                  <ul className="tools" aria-label="Tools">
-                    {l.tools.map((t) => <li key={t}>{t}</li>)}
-                  </ul>
-                  <Ext href={l.repo} className="link">Repository</Ext>
-                </article>
-              ))}
+        {/* Labs: a marked trail (DNT red T waypoints) */}
+        <section className="trail-sec" id="labs" aria-labelledby="labs-title">
+          <div className="wrap trail-grid">
+            <div className="trail-intro">
+              <h2 id="labs-title" className="title" data-reveal>Security labs</h2>
+              <p className="intro" data-reveal>
+                Coursework from my MSc in Computer Science. Five routes through systems built to break, marked
+                with the red T from Norwegian hiking trails.
+              </p>
             </div>
+            <ol className="trail">
+              {labs.map((l) => (
+                <li key={l.title} className="waypoint" data-reveal>
+                  <svg className="t-mark" viewBox="0 0 40 40" aria-hidden="true">
+                    <path d="M7 9.5c8.5-1.6 17.6-1.4 26.4.2l-.6 7.1c-3.1-.5-5.6-.7-8.1-.8l.6 17.4-8.3.3-.4-17.6c-2.6.1-5.3.3-8.2.8z" />
+                  </svg>
+                  <div>
+                    <h3>{l.title}</h3>
+                    <p>{l.text}</p>
+                    <p className="waypoint__tools">{l.tools.join(" / ")}</p>
+                    <Ext href={l.repo} className="link">Repository</Ext>
+                  </div>
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 
-        {/* Builds: lichen */}
+        {/* Builds: Swiss typographic index on lichen */}
         <section className="lichen" id="builds" aria-labelledby="builds-title">
           <div className="wrap">
             <h2 id="builds-title" className="title" data-reveal>What I build</h2>
-            <div className="builds">
+            <ul className="index">
               {builds.map((b) => (
-                <article key={b.title} className="build" data-reveal>
-                  <p className="build__kind">{b.kind}</p>
+                <li key={b.title} className="index__row" data-reveal>
                   <h3>{b.title}</h3>
-                  <p>{b.text}</p>
-                  <p className="build__stack">{b.stack}</p>
-                </article>
+                  <p className="index__text">{b.text}</p>
+                  <p className="index__meta"><span>{b.kind}</span><span>{b.stack}</span></p>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </section>
 
-        {/* Front-end: snow */}
-        <section className="snow" aria-labelledby="fe-title">
-          <div className="wrap">
+        {/* Interfaces: filmstrip */}
+        <section className="strip-sec" aria-labelledby="fe-title">
+          <div className="wrap strip-head">
             <h2 id="fe-title" className="title" data-reveal>Interfaces</h2>
-            <div className="shots">
-              {frontEnd.map((p) => (
-                <article key={p.title} className="shot" data-reveal>
-                  <img src={p.img} alt={`Screenshot of ${p.title}`} loading="lazy" width="1080" height="686" />
-                  <div className="shot__text">
-                    <h3>{p.title}</h3>
-                    <p>{p.text}</p>
-                    <p className="shot__links">
-                      <Ext href={p.repo} className="link">Code</Ext>
-                      {p.demo && <Ext href={p.demo} className="link">Live demo</Ext>}
-                    </p>
-                  </div>
-                </article>
-              ))}
-            </div>
+            <p className="intro">Front-end projects. Scroll sideways.</p>
+          </div>
+          <div className="strip" tabIndex={0} role="region" aria-label="Front-end projects, scrollable">
+            {frontEnd.map((p) => (
+              <figure key={p.title} className="frame">
+                <img src={p.img} alt={`Screenshot of ${p.title}`} loading="lazy" width="680" height="415" />
+                <figcaption>
+                  <h3>{p.title}</h3>
+                  <p>{p.text}</p>
+                  <p className="frame__links">
+                    <Ext href={p.repo} className="link">Code</Ext>
+                    {p.demo && <Ext href={p.demo} className="link">Live demo</Ext>}
+                  </p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
 
-            <h2 className="title title--sub" id="skills" data-reveal>Toolbox</h2>
-            <div className="skills">
+        {/* Toolbox: run-in type */}
+        <section className="tools-sec" id="skills" aria-labelledby="skills-title">
+          <div className="wrap">
+            <h2 id="skills-title" className="title" data-reveal>Toolbox</h2>
+            <div className="runin" data-reveal>
               {skills.map((s) => (
-                <div key={s.group} data-reveal>
-                  <h3>{s.group}</h3>
-                  <ul>{s.items.map((i) => <li key={i}>{i}</li>)}</ul>
-                </div>
+                <p key={s.group}>
+                  <strong>{s.group}</strong> {s.items.join(", ")}.
+                </p>
               ))}
+              <p><strong>Languages</strong> Ukrainian, Norwegian, English, Russian.</p>
             </div>
-            <p className="langs" data-reveal>
-              <strong>Languages:</strong> Ukrainian, Norwegian, English, Russian
-            </p>
           </div>
         </section>
 
         {/* Contact: heather */}
         <section className="heather" id="contact" aria-labelledby="contact-title">
+          <div className="ridge" aria-hidden="true" dangerouslySetInnerHTML={{ __html: ridge }} />
           <div className="wrap contact">
             <h2 id="contact-title">Let’s talk</h2>
             <p>Questions about IT operations, security or front-end? Send me a message.</p>
