@@ -318,7 +318,7 @@ code { font-family: var(--code); font-size: 0.9em; }
 .frame .link { color: var(--sea); }
 
 /* ---------- toolbox: run-in type ---------- */
-.tools-sec { padding: clamp(3rem, 8vh, 5rem) 0 calc(clamp(60px, 10vw, 140px) + clamp(4rem, 10vh, 6rem)); }
+.tools-sec { padding: clamp(3rem, 8vh, 5rem) 0 clamp(5rem, 12vh, 8rem); }
 .runin { margin-top: 2rem; max-width: 62rem; }
 .runin p {
   font-size: clamp(1.25rem, 2.3vw, 1.85rem); line-height: 1.4; letter-spacing: -0.015em; color: var(--rock-dim);
@@ -328,9 +328,10 @@ code { font-family: var(--code); font-size: 0.9em; }
 .runin strong::after { content: ""; display: inline-block; width: 0.45em; height: 0.45em; margin-left: 0.45rem; border-radius: 50%; background: var(--berry); vertical-align: 0.15em; }
 
 /* ---------- contact (heather) ---------- */
-.heather { position: relative; background: var(--heather); color: var(--heather-ink); padding: clamp(6rem, 16vh, 10rem) 0 clamp(5rem, 14vh, 9rem); }
-.ridge { position: absolute; left: 0; right: 0; bottom: calc(100% - 1px); height: clamp(60px, 10vw, 140px); color: var(--heather); pointer-events: none; }
-.ridge svg { width: 100%; height: 100%; display: block; }
+.heather { position: relative; overflow: hidden; background: var(--heather); color: var(--heather-ink); padding: clamp(5rem, 14vh, 9rem) 0; }
+.contact__map { position: absolute; inset: 0; color: #e7b9cd; opacity: 0.2; pointer-events: none; transform: scaleX(-1); }
+.contact__map svg { width: 100%; height: 100%; }
+.contact { position: relative; }
 .contact h2 { font-size: clamp(3rem, 9vw, 7rem); line-height: 0.95; letter-spacing: -0.045em; font-weight: 700; }
 .contact p { margin-top: 1.25rem; max-width: 30rem; font-size: 1.15rem; }
 .heather .btn--snow { color: var(--heather); }
