@@ -5,7 +5,8 @@ Personal site: IT operations & security, front-end & mobile development, UX/UI.
 ## Stack
 
 - React 19 + Vite
-- Self-hosted fonts via Fontsource (Instrument Serif, IBM Plex Sans, IBM Plex Mono)
+- Self-hosted fonts via Fontsource: Schibsted Grotesk, with Onest for Cyrillic
+- Three languages: Norwegian (default), Ukrainian, English. `?lang=nb|uk|en` or the switcher
 - Plain CSS, no UI framework, no animation library
 - Deployed on Vercel
 
@@ -33,4 +34,4 @@ npm run build    # output in dist/
 
 ## Content
 
-All texts and project data live in `src/data.js`.
+All texts and project data live in `src/data.js`, per language.
