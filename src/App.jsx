@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import contours from "./assets/contours.svg?raw";
-import ridge from "./assets/ridge.svg?raw";
 import { LANGS, links, ui, tracks, hardeningLog, labs, builds, frontEnd, skills } from "./data.js";
 
 const STORAGE_KEY = "lang";
@@ -339,7 +338,7 @@ export default function App() {
         </section>
 
         <section className="heather" id="contact" aria-labelledby="contact-title">
-          <div className="ridge" aria-hidden="true" dangerouslySetInnerHTML={{ __html: ridge }} />
+          <div className="contact__map" aria-hidden="true" dangerouslySetInnerHTML={{ __html: contours }} />
           <div className="wrap contact">
             <h2 id="contact-title">{t.contactTitle}</h2>
             <p>{t.contactText}</p>
