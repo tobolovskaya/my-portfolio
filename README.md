@@ -1,59 +1,36 @@
-<h2 align="center">
-  My Portfolio - v2.0<br/>
-  <a href="/" target="_blank">Yevheniia Tobolovska</a>
-</h2>
-<div align="center">
-  <img alt="Demo" src="./Images/readme-img1.png" />
-</div>
+# Portfolio · Yevheniia Tobolovska
 
-<br/>
+Personal site: IT operations & security, front-end & mobile development, UX/UI.
 
-<center>
+## Stack
 
-[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com) &nbsp;
-[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com) &nbsp;
-[![forthebadge](https://forthebadge.com/images/badges/css-farme-work-bootstrap-5.svg)](https://forthebadge.com) &nbsp;
+- React 19 + Vite
+- Self-hosted fonts via Fontsource (Instrument Serif, IBM Plex Sans, IBM Plex Mono)
+- Plain CSS, no UI framework, no animation library
+- Deployed on Vercel
 
-</center>
+## Security & privacy
 
-You can fork this repo to modify and make changes of your own. Please give me proper credit by linking back to [Yevheniia Tobolovska](https://github.com/tobolovskaya/my-portfolio). Thanks!
+The site is static and loads nothing from third parties: no analytics, no trackers, no external fonts or CDNs.
+`vercel.json` sets strict response headers:
 
-## Built With
+| Header | Purpose |
+|---|---|
+| `Content-Security-Policy` | Only same-origin scripts, styles, fonts and images; no framing, no plugins |
+| `Strict-Transport-Security` | HTTPS only |
+| `X-Content-Type-Options: nosniff` | Blocks MIME-type sniffing |
+| `Referrer-Policy` | Sends only the origin to other sites |
+| `Permissions-Policy` | Camera, microphone, location and payment APIs disabled |
+| `Cross-Origin-Opener-Policy` | Isolates the browsing context |
 
-My personal portfolio <a href="/" target="_blank">Yevheniia Tobolovska</a> which features some of my github projects as well as my resume and technical skills.<br/>
+## Run locally
 
-This project was built using these technologies.
+```bash
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # output in dist/
+```
 
-- React.js
-- Node.js
-- Express.js
-- CSS3
-- VsCode
-- Vercel
+## Content
 
-## Features
-
-**📖 Multi-Page Layout**
-
-**🎨 Styled with React-Bootstrap and Css with easy to customize colors**
-
-**📱 Fully Responsive**
-
-## Getting Started
-
-Clone down this repository. You will need `node.js` and `git` installed globally on your machine.
-
-## 🛠 Installation and Setup Instructions
-
-1. Installation: `npm install`
-
-2. In the project directory, you can run: `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-The page will reload if you make edits.
-
-## Usage Instructions
-
-Open the project folder and Navigate to `/src/components/`. <br/>
-You will find all the components used and you can edit your information accordingly.
+All texts and project data live in `src/data.js`.
