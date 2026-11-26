@@ -261,7 +261,7 @@ export default function App() {
               <div>
                 <p>{t.caseIntro}</p>
                 <dl className="facts">
-                  <div><dt>{t.factFindings}</dt><dd>33<span aria-hidden="true">→</span>25</dd></div>
+                  <div><dt>{t.factFindings}</dt><dd>33<span aria-hidden="true">→</span>0</dd></div>
                   <div><dt>{t.factPrs}</dt><dd>{hardeningLog.length}</dd></div>
                   <div><dt>{t.factScript}</dt><dd>−172</dd></div>
                 </dl>
