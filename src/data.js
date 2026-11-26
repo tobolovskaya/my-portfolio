@@ -40,7 +40,7 @@ export const ui = {
     caseFoot: "Gjenstående funn er planlagt eller hoppet over med skriftlig begrunnelse.",
     caseLink: "Repo og alle PR-er",
     labsTitle: "Sikkerhetslab",
-    labsIntro: "Oppgaver fra mastergraden min i informatikk. Fem ruter gjennom systemer laget for å knekke, merket med den røde T-en fra norske turstier.",
+    labsIntro: "Oppgaver fra mastergraden min i informatikk og egne laber. Seks ruter gjennom systemer laget for å knekke, merket med den røde T-en fra norske turstier.",
     repo: "Repo",
     buildsTitle: "Hva jeg bygger",
     feTitle: "Grensesnitt",
@@ -81,7 +81,7 @@ export const ui = {
     caseFoot: "Решта знахідок заплановані або пропущені з письмовим поясненням.",
     caseLink: "Репозиторій і всі PR",
     labsTitle: "Лабораторні з безпеки",
-    labsIntro: "Роботи з моєї магістратури з Computer Science. П'ять маршрутів через системи, створені для того, щоб їх зламати, позначені червоною «T» з норвезьких туристичних стежок.",
+    labsIntro: "Роботи з моєї магістратури з Computer Science і власні лаби. Шість маршрутів через системи, створені для того, щоб їх зламати, позначені червоною «T» з норвезьких туристичних стежок.",
     repo: "Репозиторій",
     buildsTitle: "Що я створюю",
     feTitle: "Інтерфейси",
@@ -122,7 +122,7 @@ export const ui = {
     caseFoot: "Remaining findings are scheduled or skipped with a written reason.",
     caseLink: "Repository and every PR",
     labsTitle: "Security labs",
-    labsIntro: "Coursework from my MSc in Computer Science. Five routes through systems built to break, marked with the red T from Norwegian hiking trails.",
+    labsIntro: "Coursework from my MSc in Computer Science and my own labs. Six routes through systems built to break, marked with the red T from Norwegian hiking trails.",
     repo: "Repository",
     buildsTitle: "What I build",
     feTitle: "Interfaces",
@@ -422,6 +422,13 @@ export const hardeningLog = [
 
 export const labs = [
   {
+    repo: "https://github.com/tobolovskaya/network-lab",
+    tools: ["Cisco IOS", "VLAN / 802.1Q", "Inter-VLAN routing", "ACL", "Packet Tracer"],
+    nb: { title: "Segmentert kontornett med VLAN og ACL", text: "Tre VLAN, trunk mellom svitsjer og router-on-a-stick. En utvidet ACL gir gjester internett, men stenger dem ute fra servere og ansatte, bevist med ping og ACL-tellere." },
+    uk: { title: "Сегментована офісна мережа з VLAN і ACL", text: "Три VLAN, trunk між комутаторами й router-on-a-stick. Розширений ACL дає гостям інтернет, але не пускає до серверів і працівників, що підтверджено ping і лічильниками ACL." },
+    en: { title: "Segmented office network with VLANs and ACL", text: "Three VLANs, trunks between switches and router-on-a-stick. An extended ACL lets guests out to the internet but keeps them away from servers and staff, proven with ping and ACL counters." },
+  },
+  {
     repo: "https://github.com/tobolovskaya/CICD_DevSecOps",
     tools: ["GitLab CI", "SAST", "SCA", "DAST", "Python"],
     nb: { title: "CI/CD-pipeline med sikkerhetsporter", text: "GitLab-pipeline for et Flask-API som feiler tidlig: hemmelighetsskanning, SAST, tester, SCA og DAST rundt bygg og utrulling." },
@@ -524,19 +531,19 @@ export const frontEnd = [
 
 export const skills = {
   nb: [
-    { group: "Drift", items: ["Microsoft 365", "Entra ID", "Intune", "Autopilot", "Conditional Access", "Windows-imaging", "brukerstøtte"] },
+    { group: "Drift", items: ["Microsoft 365", "Entra ID", "Intune", "Autopilot", "Conditional Access", "Windows-imaging", "brukerstøtte", "VLAN", "ACL", "Cisco IOS"] },
     { group: "Sky og sikkerhet", items: ["AWS", "EKS", "IAM / IRSA", "KMS", "Terraform", "Kubernetes", "Helm", "Checkov", "gitleaks", "GitHub Actions", "Jenkins", "Argo CD"] },
     { group: "Utvikling", items: ["JavaScript", "TypeScript", "React", "React Native", "Expo", "Redux", "WordPress", "REST API", "Python"] },
     { group: "Design og data", items: ["Figma", "Adobe", "mobil først-UX", "Power BI"] },
   ],
   uk: [
-    { group: "Експлуатація", items: ["Microsoft 365", "Entra ID", "Intune", "Autopilot", "Conditional Access", "образи Windows", "підтримка користувачів"] },
+    { group: "Експлуатація", items: ["Microsoft 365", "Entra ID", "Intune", "Autopilot", "Conditional Access", "образи Windows", "підтримка користувачів", "VLAN", "ACL", "Cisco IOS"] },
     { group: "Хмара й безпека", items: ["AWS", "EKS", "IAM / IRSA", "KMS", "Terraform", "Kubernetes", "Helm", "Checkov", "gitleaks", "GitHub Actions", "Jenkins", "Argo CD"] },
     { group: "Розробка", items: ["JavaScript", "TypeScript", "React", "React Native", "Expo", "Redux", "WordPress", "REST API", "Python"] },
     { group: "Дизайн і дані", items: ["Figma", "Adobe", "mobile-first UX", "Power BI"] },
   ],
   en: [
-    { group: "Operations", items: ["Microsoft 365", "Entra ID", "Intune", "Autopilot", "Conditional Access", "Windows imaging", "user support"] },
+    { group: "Operations", items: ["Microsoft 365", "Entra ID", "Intune", "Autopilot", "Conditional Access", "Windows imaging", "user support", "VLAN", "ACL", "Cisco IOS"] },
     { group: "Cloud & Security", items: ["AWS", "EKS", "IAM / IRSA", "KMS", "Terraform", "Kubernetes", "Helm", "Checkov", "gitleaks", "GitHub Actions", "Jenkins", "Argo CD"] },
     { group: "Development", items: ["JavaScript", "TypeScript", "React", "React Native", "Expo", "Redux", "WordPress", "REST APIs", "Python"] },
     { group: "Design & Data", items: ["Figma", "Adobe", "mobile-first UX", "Power BI"] },
