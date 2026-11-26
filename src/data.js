@@ -504,6 +504,16 @@ export const labs = [
     en: { title: "Dockerfile security analysis", text: "An insecure and a hardened Dockerfile in CI: the hardened one must pass and become healthy, the insecure one must be caught. Found that the first \"secure\" version could never start correctly." },
   },
   {
+    repo: "https://github.com/tobolovskaya/crypto-config-hardening",
+    area: "appsec",
+    origin: "rebuilt",
+    metric: { value: "17", nb: "funn i 3 usikre konfigurasjoner, alle rettet", uk: "знахідок у 3 небезпечних конфігураціях, усі виправлено", en: "findings in 3 insecure configs, all fixed" },
+    tools: ["Python", "pytest", "GitHub Actions", "JWT", "Argon2id", "AES-GCM"],
+    nb: { title: "Herding av kryptokonfigurasjon", text: "Tre usikre konfigurasjoner for JWT, passordhashing og kryptering, med en herdet versjon av hver. 15 regler i Python sjekker dem i CI: de herdede må bestå, de usikre må bli fanget." },
+    uk: { title: "Посилення криптографічних налаштувань", text: "Три небезпечні конфігурації для JWT, хешування паролів і шифрування та захищена версія кожної. 15 правил на Python перевіряють їх у CI: захищені мають пройти, небезпечні мають бути спіймані." },
+    en: { title: "Crypto config hardening", text: "Three insecure configs for JWT, password hashing and encryption, with a hardened version of each. 15 Python rules check them in CI: the hardened ones must pass, the insecure ones must be caught." },
+  },
+  {
     repo: "https://github.com/tobolovskaya/REST-API-OWASP-Juice-Shop",
     area: "appsec",
     origin: "master",
@@ -512,16 +522,6 @@ export const labs = [
     nb: { title: "REST API-vurdering: OWASP Juice Shop", text: "Fem API-sårbarheter funnet og dokumentert, blant annet IDOR, SQL-injeksjon og mass assignment, koblet til STRIDE og CWE." },
     uk: { title: "Аудит REST API: OWASP Juice Shop", text: "П'ять вразливостей API знайдено й задокументовано, серед них IDOR, SQL-ін'єкція та mass assignment, з прив'язкою до STRIDE і CWE." },
     en: { title: "REST API assessment: OWASP Juice Shop", text: "Five API vulnerabilities found and documented, including IDOR, SQL injection and mass assignment, mapped to STRIDE and CWE." },
-  },
-  {
-    repo: "https://github.com/tobolovskaya/secure_dz5",
-    area: "appsec",
-    origin: "master",
-    metric: { value: "12", nb: "farlige innstillinger rettet i 3 konfigurasjoner", uk: "небезпечних налаштувань виправлено в 3 конфігураціях", en: "dangerous settings fixed across 3 configs" },
-    tools: ["JWT", "Argon2id", "AES-GCM", "YAML"],
-    nb: { title: "Gjennomgang av kryptokonfigurasjon", text: "Fant og rettet farlige kryptoinnstillinger: usignerte JWT-er, SHA-1 for passord, faste IV-er og tokener som aldri utløper." },
-    uk: { title: "Аналіз криптографічних налаштувань", text: "Знайшла й виправила небезпечні налаштування: непідписані JWT, SHA-1 для паролів, фіксовані IV і токени без терміну дії." },
-    en: { title: "Cryptography configuration review", text: "Found and fixed dangerous crypto settings: unsigned JWTs, SHA-1 password hashing, fixed IVs and tokens that never expire." },
   },
   {
     repo: "https://github.com/tobolovskaya/secure-arch-lab",
