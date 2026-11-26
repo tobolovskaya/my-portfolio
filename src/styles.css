@@ -90,7 +90,8 @@ code { font-family: var(--code); font-size: 0.9em; }
   padding: 1rem var(--pad);
   color: var(--sea-ink);
 }
-.mark { font-weight: 650; text-decoration: none; letter-spacing: -0.01em; }
+.mark { display: inline-flex; text-decoration: none; }
+.mark img { display: block; height: 60px; width: auto; }
 .top nav { display: flex; gap: clamp(1rem, 3vw, 2rem); margin-left: auto; }
 .lang { display: flex; gap: 2px; padding: 3px; border-radius: 999px; background: color-mix(in srgb, var(--sea-deep) 80%, transparent); border: 1px solid color-mix(in srgb, var(--sea-ink) 18%, transparent); }
 .lang button {
@@ -160,6 +161,13 @@ code { font-family: var(--code); font-size: 0.9em; }
   border: 1px solid color-mix(in srgb, var(--sea-ink) 14%, transparent);
   border-radius: var(--radius);
   padding: 1.5rem;
+}
+.card-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.card-head__name { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.02em; color: var(--sea-ink); line-height: 1.2; }
+.card-head h2 { margin-top: 0.2rem; }
+.card-head__photo {
+  flex: none; width: 72px; height: 72px; border-radius: 50%; object-fit: cover;
+  border: 2px solid color-mix(in srgb, var(--sea-ink) 25%, transparent);
 }
 .hero__log h2 { font-size: 1rem; font-weight: 600; letter-spacing: 0; color: var(--sea-dim); }
 .hero__log ol { list-style: none; margin: 1rem 0 0; padding: 0; }

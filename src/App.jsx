@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import contours from "./assets/contours.svg?raw";
+import portrait from "./assets/portrait.webp";
+import logo from "./assets/logo.svg";
 import { LANGS, links, ui, tracks, hardeningLog, labs, builds, frontEnd, skills } from "./data.js";
 
 const STORAGE_KEY = "lang";
@@ -74,6 +76,17 @@ function LangSwitch({ lang, setLang, t }) {
 
 /* GitHub contribution calendar from /api/contributions (token stays on the server).
    While loading it shows an empty grid; if the API fails it falls back to the latest PRs. */
+/* Card header: name and card title on the left, portrait on the right */
+const CardHead = ({ id, title }) => (
+  <div className="card-head">
+    <div>
+      <p className="card-head__name">Yevheniia Tobolovska</p>
+      <h2 id={id}>{title}</h2>
+    </div>
+    <img className="card-head__photo" src={portrait} alt="" width="72" height="72" decoding="async" />
+  </div>
+);
+
 const LOCALES = { nb: "nb-NO", uk: "uk-UA", en: "en-GB" };
 const CELL = 11;
 
@@ -93,7 +106,7 @@ function Activity({ lang, t, latest }) {
   if (failed) {
     return (
       <aside className="hero__log" aria-labelledby="latest-title">
-        <h2 id="latest-title">{t.latest}</h2>
+        <CardHead id="latest-title" title={t.latest} />
         <ol>
           {latest.map((c) => (
             <li key={c.pr}>
@@ -113,7 +126,7 @@ function Activity({ lang, t, latest }) {
 
   return (
     <aside className="hero__log activity" aria-labelledby="activity-title" aria-busy={!data}>
-      <h2 id="activity-title">{t.activity}</h2>
+      <CardHead id="activity-title" title={t.activity} />
       <p className="activity__total">
         <span>{t.activityTotal}</span>
         <strong>{data ? data.total.toLocaleString(LOCALES[lang]) : "–"}</strong>
@@ -276,7 +289,7 @@ export default function App() {
       <a className="skip" href="#main">{t.skip}</a>
 
       <header className="top">
-        <a href="#top" className="mark">Yevheniia Tobolovska</a>
+        <a href="#top" className="mark" aria-label="Yevheniia Tobolovska"><img src={logo} alt="" width="120" height="60" /></a>
         <nav aria-label="Sections">
           <a href="#work">{t.nav.work}</a>
           <a href="#labs">{t.nav.labs}</a>
