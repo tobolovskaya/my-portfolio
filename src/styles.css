@@ -198,10 +198,10 @@ code { font-family: var(--code); font-size: 0.9em; }
   border: 1px solid var(--night-2); border-radius: var(--radius); overflow: hidden;
   background: #121b2e;
 }
-/* About five PRs visible, the rest scroll inside the list */
+/* About six PRs visible, the rest scroll inside the list */
 .viewer__tabs {
   display: flex; flex-direction: column; border-right: 1px solid var(--night-2); background: var(--night);
-  max-height: 24rem; overflow-y: auto; overscroll-behavior: contain;
+  max-height: 29rem; overflow-y: auto; overscroll-behavior: contain;
   scrollbar-width: thin; scrollbar-color: var(--night-2) transparent;
 }
 .viewer__tab { flex: none; }
