@@ -6,7 +6,6 @@
   sea (hav)        – hero field
   polar night      – case study field
   snow             – reading surfaces
-  lichen (lav)     – builds field
   heather (lyng)   – contact field
   cloudberry       – the one warm accent
 */
@@ -26,10 +25,6 @@
   --rock: #2a3236;
   --rock-dim: #56636a;
   --line: #cfd8d7;
-
-  --lichen: #cdd5b1;
-  --lichen-ink: #262d1c;
-  --lichen-dim: #4e5838;
 
   --heather: #8f4a6b;
   --heather-ink: #fbeef4;
@@ -368,21 +363,6 @@ code { font-family: var(--code); font-size: 0.9em; }
 .lab-card--next:hover { transform: none; box-shadow: none; }
 .lab-card--next h3 { color: var(--rock-dim); }
 
-/* ---------- builds: Swiss index on lichen ---------- */
-.lichen { background: var(--lichen); color: var(--lichen-ink); padding: clamp(5rem, 12vh, 8rem) 0; }
-.lichen .title { color: var(--lichen-ink); }
-.index { list-style: none; margin: 3rem 0 0; padding: 0; border-bottom: 3px solid var(--lichen-ink); }
-.index__row {
-  display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) 13rem; gap: 2rem; align-items: baseline;
-  padding: 1.6rem 0; border-top: 3px solid var(--lichen-ink);
-  transition: background 0.35s var(--ease), padding 0.35s var(--ease);
-}
-.index__row + .index__row { border-top-width: 1px; }
-.index__row:hover { background: color-mix(in srgb, var(--berry) 40%, var(--lichen)); padding-inline: 1rem; }
-.index__row h3 { font-size: clamp(1.7rem, 3.4vw, 2.8rem); line-height: 1; letter-spacing: -0.035em; font-weight: 700; }
-.index__text { color: var(--lichen-ink); }
-.index__meta { display: grid; gap: 0.2rem; font-size: 0.92rem; color: var(--lichen-dim); text-align: right; }
-.index__meta span:first-child { font-weight: 650; color: var(--lichen-ink); }
 
 /* ---------- interfaces: filmstrip ---------- */
 .strip-sec { padding: clamp(5rem, 12vh, 8rem) 0 clamp(3rem, 8vh, 5rem); background: var(--snow); }
@@ -447,7 +427,7 @@ code { font-family: var(--code); font-size: 0.9em; }
   html { scroll-behavior: auto; }
   .hero__map path { animation: none; }
   .js-reveal [data-reveal] { opacity: 1; transform: none; transition: none; }
-  .btn, .index__row { transition: none; }
+  .btn { transition: none; }
   .diff__line { animation: none; }
   .marquee__track { animation: none; }
   .marquee__viewport { overflow-x: auto; mask-image: none; }
@@ -467,8 +447,6 @@ code { font-family: var(--code); font-size: 0.9em; }
   .viewer__tabtitle { display: none; }
   .viewer__tab[aria-selected="true"] { box-shadow: inset 0 -3px 0 var(--berry); }
   .labs-head, .lab-grid { grid-template-columns: 1fr; }
-  .index__row { grid-template-columns: 1fr; gap: 0.6rem; }
-  .index__meta { text-align: left; }
 }
 @media (max-width: 640px) {
   .top nav { display: none; }
