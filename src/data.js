@@ -12,7 +12,7 @@ export const LANGS = [
 export const links = {
   github: "https://github.com/tobolovskaya",
   linkedin: "https://www.linkedin.com/in/yevheniia-tobolovska",
-  platform: "https://github.com/tobolovskaya/my-microservice-project",
+  platform: "https://github.com/tobolovskaya/aws-eks-terraform-platform",
 };
 
 /* ---------- interface strings ---------- */
@@ -29,7 +29,7 @@ export const ui = {
     seeWork: "Se arbeidet",
     latest: "Siste endringer",
     allPrs: (n) => `Alle ${n} pull requests`,
-    caseTitle: "Fra åpen til lukket: en AWS-plattform i sju pull requests",
+    caseTitle: "Fra åpen til lukket: en AWS-plattform i ti pull requests",
     caseIntro: "En Terraform-plattform med VPC, EKS, RDS, ECR, Jenkins og Argo CD. Jeg skannet den med Checkov, skilte ekte risiko fra støy og rettet funnene i små, gjennomgåtte endringer. Velg en endring for å se koden.",
     factFindings: "Checkov-funn",
     factPrs: "Pull requests",
@@ -70,7 +70,7 @@ export const ui = {
     seeWork: "Переглянути роботи",
     latest: "Останні зміни",
     allPrs: (n) => `Усі ${n} pull request-ів`,
-    caseTitle: "Від відкритої до захищеної: AWS-платформа за сім pull request-ів",
+    caseTitle: "Від відкритої до захищеної: AWS-платформа за десять pull request-ів",
     caseIntro: "Terraform-платформа з VPC, EKS, RDS, ECR, Jenkins і Argo CD. Я просканувала її Checkov, відділила справжні ризики від шуму й виправила знахідки невеликими змінами з рев'ю. Оберіть зміну, щоб побачити код.",
     factFindings: "Знахідки Checkov",
     factPrs: "Pull request-и",
@@ -111,7 +111,7 @@ export const ui = {
     seeWork: "See the work",
     latest: "Latest changes",
     allPrs: (n) => `All ${n} pull requests`,
-    caseTitle: "From open to locked down: an AWS platform in seven pull requests",
+    caseTitle: "From open to locked down: an AWS platform in ten pull requests",
     caseIntro: "A Terraform platform with VPC, EKS, RDS, ECR, Jenkins and Argo CD. I scanned it with Checkov, separated real risks from noise and fixed the findings in small reviewed changes. Pick a change to see the code.",
     factFindings: "Checkov findings",
     factPrs: "Pull requests",
@@ -160,7 +160,7 @@ export const tracks = {
   ],
 };
 
-/* Real pull requests in tobolovskaya/my-microservice-project.
+/* Real pull requests in tobolovskaya/aws-eks-terraform-platform.
    Diff lines are excerpts of the actual changes. */
 export const hardeningLog = [
   {
@@ -292,6 +292,59 @@ export const hardeningLog = [
       nb: "Byggagentene får kortlevde tilganger til nøyaktig ett register, i stedet for å låne nodens rolle.",
       uk: "Агенти збірки отримують короткочасний доступ рівно до одного реєстру, а не позичають роль ноди.",
       en: "Build agents get short-lived credentials for exactly one registry, instead of borrowing the node's role.",
+    },
+  },
+  {
+    pr: 16,
+    title: "ci(jenkins): build images with Kaniko instead of docker.sock",
+    tag: "no docker.sock",
+    file: "Django/Jenkinsfile",
+    diff: [
+      ["-", "  - name: docker-sock"],
+      ["-", "      path: /var/run/docker.sock"],
+      ["+", "    image: ghcr.io/osscontainertools/kaniko:v1.28.0-alpine"],
+      ["+", "/kaniko/executor --destination \"${ECR_REGISTRY}:${IMAGE_TAG}\" \\"],
+      ["+", "  --credential-helpers ecr"],
+    ],
+    why: {
+      nb: "En montert Docker-socket gir bygget root på noden. Kaniko bygger bildet uten Docker-daemon og uten privilegier.",
+      uk: "Змонтований Docker-сокет дає збірці root на ноді. Kaniko збирає образ без Docker-демона і без привілеїв.",
+      en: "A mounted Docker socket gives the build root on the node. Kaniko builds the image without a Docker daemon or privileges.",
+    },
+  },
+  {
+    pr: 17,
+    title: "security: fix Checkov findings (ECR, SGs, flow logs, S3)",
+    tag: "CKV2_AWS_11 · CKV_AWS_51",
+    file: "modules/vpc/security.tf · modules/ecr/variables.tf",
+    diff: [
+      ["+", 'resource "aws_flow_log" "main" {'],
+      ["+", '  traffic_type    = "ALL"'],
+      ["+", "  log_destination = aws_cloudwatch_log_group.flow_logs[0].arn"],
+      ["-", '  default = "MUTABLE"'],
+      ["+", '  default = "IMMUTABLE"'],
+    ],
+    why: {
+      nb: "Nettverkstrafikken logges kryptert i et år, så en hendelse kan etterforskes. Bildetagger kan ikke overskrives i stillhet.",
+      uk: "Мережевий трафік логується в зашифрованому вигляді рік, тож інцидент можна розслідувати. Теги образів не можна тихо перезаписати.",
+      en: "Network traffic is logged, encrypted, for a year, so an incident can be investigated. Image tags cannot be silently overwritten.",
+    },
+  },
+  {
+    pr: 18,
+    title: "ci: document accepted Checkov risks and make the scan blocking",
+    tag: "Checkov 0 failed",
+    file: ".github/workflows/terraform.yml · modules/rds/rds.tf",
+    diff: [
+      [" ", "      - uses: bridgecrewio/checkov-action@v12"],
+      [" ", "          framework: terraform"],
+      ["-", "          soft_fail: true"],
+      ["+", "#checkov:skip=CKV_AWS_157: Multi-AZ doubles the cost; set multi_az = true for production"],
+    ],
+    why: {
+      nb: "Akseptert risiko står dokumentert ved ressursen, ikke skjult. Nye funn stopper bygget.",
+      uk: "Прийнятий ризик задокументований біля ресурсу, а не прихований. Нові знахідки зупиняють збірку.",
+      en: "Accepted risks are documented next to the resource, not hidden. New findings now fail the build.",
     },
   },
 ];
