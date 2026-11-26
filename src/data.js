@@ -61,7 +61,6 @@ export const ui = {
     nextStop: "Neste stopp",
     nextTitle: "Brannmur med OPNsense",
     nextText: "Neste lab. Under arbeid.",
-    buildsTitle: "Hva jeg bygger",
     feTitle: "Grensesnitt",
     feIntro: "Frontend-prosjekter.",
     code: "Kode",
@@ -119,7 +118,6 @@ export const ui = {
     nextStop: "Наступна зупинка",
     nextTitle: "Брандмауер з OPNsense",
     nextText: "Наступна лаба. У роботі.",
-    buildsTitle: "Що я створюю",
     feTitle: "Інтерфейси",
     feIntro: "Фронтенд-проєкти.",
     code: "Код",
@@ -140,7 +138,7 @@ export const ui = {
     description: "IT operations and security, cloud infrastructure as code, and front-end & mobile development. Based in Norway.",
     skip: "Skip to content",
     langLabel: "Language",
-    nav: { work: "Work", labs: "Labs", builds: "Builds", contact: "Contact" },
+    nav: { work: "Work", labs: "Labs", builds: "Projects", contact: "Contact" },
     heroA: "Secure operations.",
     heroB: "Good apps.",
     lede: "I keep devices and users secure, build cloud infrastructure as code, and design and develop web and mobile apps. Based in Norway.",
@@ -177,7 +175,6 @@ export const ui = {
     nextStop: "Next stop",
     nextTitle: "Firewall with OPNsense",
     nextText: "The next lab. In progress.",
-    buildsTitle: "What I build",
     feTitle: "Interfaces",
     feIntro: "Front-end projects.",
     code: "Code",
@@ -535,33 +532,6 @@ export const labs = [
     nb: { title: "Gjennomgang av sikker arkitektur", text: "Arkitekturrapport for en FastAPI-tjeneste: hva skannere ikke ser og hvorfor, med forbedringer for typing, validering og utrulling." },
     uk: { title: "Аналіз безпечної архітектури", text: "Архітектурний звіт для сервісу на FastAPI: що пропускають сканери і чому, з виправленнями для типізації, валідації та розгортання." },
     en: { title: "Secure architecture review", text: "Architecture report for a FastAPI service: what scanners miss and why, with fixes for typing, validation and deployment." },
-  },
-];
-
-export const builds = [
-  {
-    stack: "React Native · Expo · Stripe",
-    nb: { kind: "Mobilapp", title: "Fraktmarkedsplass", text: "Kobler folk og bedrifter som trenger å frakte noe med transportører. Betaling med Stripe, innlogging med Vipps og Google." },
-    uk: { kind: "Мобільний застосунок", title: "Маркетплейс перевезень", text: "Поєднує людей і компанії, яким треба щось перевезти, з перевізниками. Оплата через Stripe, вхід через Vipps і Google." },
-    en: { kind: "Mobile app", title: "Freight marketplace", text: "Connects people and businesses who need something moved with carriers. Stripe payments, Vipps and Google sign-in." },
-  },
-  {
-    stack: "React Native · Expo",
-    nb: { kind: "Læringsapp", title: "Øving til teoriprøven", text: "Øv etter tema og trafikkskilt, laget for å hjelpe folk å bestå teoriprøven på første forsøk." },
-    uk: { kind: "Навчальний застосунок", title: "Підготовка до теоретичного іспиту", text: "Тренування за темами й дорожніми знаками, щоб скласти норвезький теоретичний іспит з водіння з першої спроби." },
-    en: { kind: "Learning app", title: "Driving theory test practice", text: "Practice by topic and traffic sign, built to help people pass the Norwegian theory test on the first try." },
-  },
-  {
-    stack: "Web · AI",
-    nb: { kind: "Nettplattform", title: "En guide til livet i Norge", text: "Røde dager og flaggdager, vær, kurs, AI-verktøy, flytteguide og praktiske artikler på ett sted." },
-    uk: { kind: "Вебплатформа", title: "Путівник по життю в Норвегії", text: "Вихідні та прапорові дні, погода, курси, AI-інструменти, гід із переїзду й практичні статті в одному місці." },
-    en: { kind: "Web platform", title: "A guide to life in Norway", text: "Public holidays and flag days, weather, courses, AI tools, a moving guide and practical articles in one place." },
-  },
-  {
-    stack: "WordPress · REST API",
-    nb: { kind: "Nettside", title: "Nettside for et energiselskap", text: "WordPress-side med REST API-integrasjoner som viser strømpriser i sanntid." },
-    uk: { kind: "Сайт", title: "Сайт енергетичної компанії", text: "Сайт на WordPress з REST API-інтеграціями, що показують ціни на електроенергію в реальному часі." },
-    en: { kind: "Website", title: "Energy company website", text: "WordPress site with REST API integrations that show live electricity price data." },
   },
 ];
 

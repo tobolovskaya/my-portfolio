@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import contours from "./assets/contours.svg?raw";
 import portrait from "./assets/portrait.webp";
 import logo from "./assets/logo.svg";
-import { LANGS, links, ui, tracks, hardeningLog, labs, builds, frontEnd, skills } from "./data.js";
+import { LANGS, links, ui, tracks, hardeningLog, labs, frontEnd, skills } from "./data.js";
 
 const STORAGE_KEY = "lang";
 const SR_DIFF = {
@@ -420,7 +420,7 @@ export default function App() {
         <nav aria-label="Sections">
           <a href="#work">{t.nav.work}</a>
           <a href="#labs">{t.nav.labs}</a>
-          <a href="#builds">{t.nav.builds}</a>
+          <a href="#projects">{t.nav.builds}</a>
           <a href="#contact">{t.nav.contact}</a>
         </nav>
         <LangSwitch lang={lang} setLang={setLang} t={t} />
@@ -479,22 +479,7 @@ export default function App() {
 
         <Labs lang={lang} t={t} />
 
-        <section className="lichen" id="builds" aria-labelledby="builds-title">
-          <div className="wrap">
-            <h2 id="builds-title" className="title">{t.buildsTitle}</h2>
-            <ul className="index">
-              {builds.map((b) => (
-                <li key={b.en.title} className="index__row" data-reveal>
-                  <h3>{b[lang].title}</h3>
-                  <p className="index__text">{b[lang].text}</p>
-                  <p className="index__meta"><span>{b[lang].kind}</span><span>{b.stack}</span></p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <section className="strip-sec" aria-labelledby="fe-title">
+        <section className="strip-sec" id="projects" aria-labelledby="fe-title">
           <div className="wrap strip-head">
             <h2 id="fe-title" className="title">{t.feTitle}</h2>
             <p className="intro">{t.feIntro}</p>
