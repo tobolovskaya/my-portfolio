@@ -171,6 +171,23 @@ code { font-family: var(--code); font-size: 0.9em; }
 .pr { font-family: var(--code); font-size: 0.85rem; color: var(--berry); font-variant-numeric: tabular-nums; }
 .hero__log-more { display: inline-block; margin-top: 0.75rem; font-weight: 600; color: var(--sea-ink); }
 
+/* GitHub activity card in the hero */
+.activity__total { display: flex; flex-direction: column; margin: 0.75rem 0 1rem; color: var(--sea-dim); font-size: 0.85rem; }
+.activity__total strong { color: var(--sea-ink); font-size: 2rem; font-weight: 700; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.activity__grid { display: block; width: 100%; height: auto; }
+.activity .lv0 { fill: color-mix(in srgb, var(--sea-ink) 10%, transparent); background: color-mix(in srgb, var(--sea-ink) 10%, transparent); }
+.activity .lv1 { fill: color-mix(in srgb, var(--berry) 35%, transparent); background: color-mix(in srgb, var(--berry) 35%, transparent); }
+.activity .lv2 { fill: color-mix(in srgb, var(--berry) 55%, transparent); background: color-mix(in srgb, var(--berry) 55%, transparent); }
+.activity .lv3 { fill: color-mix(in srgb, var(--berry) 80%, transparent); background: color-mix(in srgb, var(--berry) 80%, transparent); }
+.activity .lv4 { fill: var(--berry); background: var(--berry); }
+.activity[aria-busy="true"] .activity__grid { opacity: 0.6; }
+.activity__foot { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; justify-content: space-between; margin-top: 0.75rem; }
+.activity__foot .hero__log-more { margin-top: 0; }
+.activity__legend { display: inline-flex; align-items: center; gap: 3px; font-size: 0.75rem; color: var(--sea-dim); }
+.activity__legend i { width: 9px; height: 9px; border-radius: 2px; }
+.activity__legend i:first-of-type { margin-left: 0.35rem; }
+.activity__legend i:last-of-type { margin-right: 0.35rem; }
+
 .tracks {
   position: relative; list-style: none; padding: 0;
   margin-top: clamp(4rem, 10vh, 6.5rem); margin-bottom: 0;

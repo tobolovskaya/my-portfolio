@@ -72,6 +72,78 @@ function LangSwitch({ lang, setLang, t }) {
   );
 }
 
+/* GitHub contribution calendar from /api/contributions (token stays on the server).
+   While loading it shows an empty grid; if the API fails it falls back to the latest PRs. */
+const LOCALES = { nb: "nb-NO", uk: "uk-UA", en: "en-GB" };
+const CELL = 11;
+
+function Activity({ lang, t, latest }) {
+  const [data, setData] = useState(null);
+  const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    const ctrl = new AbortController();
+    fetch("/api/contributions", { signal: ctrl.signal })
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
+      .then(setData)
+      .catch((e) => { if (e.name !== "AbortError") setFailed(true); });
+    return () => ctrl.abort();
+  }, []);
+
+  if (failed) {
+    return (
+      <aside className="hero__log" aria-labelledby="latest-title">
+        <h2 id="latest-title">{t.latest}</h2>
+        <ol>
+          {latest.map((c) => (
+            <li key={c.pr}>
+              <span className="pr">#{c.pr}</span>
+              <code>{c.title}</code>
+            </li>
+          ))}
+        </ol>
+        <a href="#work" className="hero__log-more">{t.allPrs(hardeningLog.length)}</a>
+      </aside>
+    );
+  }
+
+  const weeks = data?.weeks ?? Array.from({ length: 53 }, () => Array.from({ length: 7 }, () => ["", 0, 0]));
+  const fmt = new Intl.DateTimeFormat(LOCALES[lang], { day: "numeric", month: "short", year: "numeric" });
+  const width = weeks.length * CELL - 2;
+
+  return (
+    <aside className="hero__log activity" aria-labelledby="activity-title" aria-busy={!data}>
+      <h2 id="activity-title">{t.activity}</h2>
+      <p className="activity__total">
+        <span>{t.activityTotal}</span>
+        <strong>{data ? data.total.toLocaleString(LOCALES[lang]) : "–"}</strong>
+      </p>
+      <svg
+        className="activity__grid"
+        viewBox={`0 0 ${width} ${7 * CELL - 2}`}
+        role="img"
+        aria-label={data ? `${t.activityTotal}: ${data.total}` : t.activity}
+      >
+        {weeks.map((w, x) =>
+          w.map(([date, count, level], y) => (
+            <rect key={`${x}-${y}`} x={x * CELL} y={y * CELL} width={CELL - 2} height={CELL - 2} rx="2" className={`lv${level}`}>
+              {date && <title>{t.activityDay(count, fmt.format(new Date(date)))}</title>}
+            </rect>
+          ))
+        )}
+      </svg>
+      <div className="activity__foot">
+        <Ext href={links.github} className="hero__log-more" t={t}>{t.activityProfile}</Ext>
+        <span className="activity__legend" aria-hidden="true">
+          {t.activityLess}
+          {[0, 1, 2, 3, 4].map((l) => <i key={l} className={`lv${l}`} />)}
+          {t.activityMore}
+        </span>
+      </div>
+    </aside>
+  );
+}
+
 /* Pick a pull request, see the actual diff. Tabs follow the WAI-ARIA pattern. */
 function DiffViewer({ lang, t }) {
   const [active, setActive] = useState(2);
@@ -230,18 +302,7 @@ export default function App() {
               </div>
             </div>
 
-            <aside className="hero__log" aria-labelledby="latest-title">
-              <h2 id="latest-title">{t.latest}</h2>
-              <ol>
-                {latest.map((c) => (
-                  <li key={c.pr}>
-                    <span className="pr">#{c.pr}</span>
-                    <code>{c.title}</code>
-                  </li>
-                ))}
-              </ol>
-              <a href="#work" className="hero__log-more">{t.allPrs(hardeningLog.length)}</a>
-            </aside>
+            <Activity lang={lang} t={t} latest={latest} />
           </div>
 
           <ul className="wrap tracks">
