@@ -198,7 +198,13 @@ code { font-family: var(--code); font-size: 0.9em; }
   border: 1px solid var(--night-2); border-radius: var(--radius); overflow: hidden;
   background: #121b2e;
 }
-.viewer__tabs { display: flex; flex-direction: column; border-right: 1px solid var(--night-2); background: var(--night); }
+/* About five PRs visible, the rest scroll inside the list */
+.viewer__tabs {
+  display: flex; flex-direction: column; border-right: 1px solid var(--night-2); background: var(--night);
+  max-height: 24rem; overflow-y: auto; overscroll-behavior: contain;
+  scrollbar-width: thin; scrollbar-color: var(--night-2) transparent;
+}
+.viewer__tab { flex: none; }
 .viewer__tab {
   display: grid; grid-template-columns: 2.6rem 1fr; gap: 0.4rem; align-items: baseline; text-align: left;
   font: 500 0.95rem/1.35 var(--font); color: var(--night-dim);
@@ -362,7 +368,7 @@ code { font-family: var(--code); font-size: 0.9em; }
   .tracks li + li { border-top: 1px solid color-mix(in srgb, var(--sea-ink) 14%, transparent); }
   .night__head { grid-template-columns: 1fr; }
   .viewer { grid-template-columns: 1fr; }
-  .viewer__tabs { flex-direction: row; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--night-2); }
+  .viewer__tabs { flex-direction: row; overflow-x: auto; overflow-y: visible; max-height: none; border-right: 0; border-bottom: 1px solid var(--night-2); }
   .viewer__tab { flex: none; grid-template-columns: auto; border-bottom: 0; border-right: 1px solid var(--night-2); padding: 0.8rem 1rem; }
   .viewer__tabtitle { display: none; }
   .viewer__tab[aria-selected="true"] { box-shadow: inset 0 -3px 0 var(--berry); }
