@@ -199,14 +199,32 @@ const spotlight = (e) => {
   e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
 };
 
+const PAGE = 4;
+
 function Labs({ lang, t }) {
   const [area, setArea] = useState("all");
+  const [page, setPage] = useState(0);
+  const sectionRef = useRef(null);
   const match = (a) => area === "all" || a === area;
   const count = (a) => (a === "all" ? labs.length : labs.filter((l) => l.area === a).length);
   const shown = labs.filter((l) => match(l.area)).length;
 
+  // Cards in the current filter, the "next stop" card last; 4 per page.
+  const order = [...labs.filter((l) => match(l.area)).map((l) => l.repo), ...(match("net") ? ["next"] : [])];
+  const pages = Math.max(1, Math.ceil(order.length / PAGE));
+  const onPage = (key) => {
+    const i = order.indexOf(key);
+    return i >= page * PAGE && i < (page + 1) * PAGE;
+  };
+  const pickArea = (a) => { setArea(a); setPage(0); };
+  const goTo = (p) => {
+    setPage(p);
+    const top = sectionRef.current?.getBoundingClientRect().top ?? 0;
+    if (top < 0) sectionRef.current.scrollIntoView({ behavior: reducedMotion() ? "auto" : "smooth" });
+  };
+
   return (
-    <section className="labs-sec" id="labs" aria-labelledby="labs-title">
+    <section className="labs-sec" id="labs" aria-labelledby="labs-title" ref={sectionRef}>
       <div className="wrap">
         <div className="labs-head">
           <h2 id="labs-title" className="title">{t.labsTitle}</h2>
@@ -215,7 +233,7 @@ function Labs({ lang, t }) {
 
         <div className="lab-filter" role="group" aria-label={t.filterLabel}>
           {AREAS.map((a) => (
-            <button key={a} type="button" aria-pressed={area === a} onClick={() => setArea(a)}>
+            <button key={a} type="button" aria-pressed={area === a} onClick={() => pickArea(a)}>
               {t.areas[a]} <span className="lab-filter__n">{count(a)}</span>
             </button>
           ))}
@@ -224,7 +242,7 @@ function Labs({ lang, t }) {
 
         <ul className="lab-grid">
           {labs.map((l) => (
-            <li key={l.repo} className="lab-card" data-reveal hidden={!match(l.area)} onPointerMove={spotlight}>
+            <li key={l.repo} className="lab-card" data-reveal hidden={!onPage(l.repo)} onPointerMove={spotlight}>
               <span className={`origin origin--${l.origin}`}>{t.origin[l.origin]}</span>
               <Metric value={l.metric.value} label={l.metric[lang]} />
               <h3>{l[lang].title}</h3>
@@ -243,12 +261,24 @@ function Labs({ lang, t }) {
               </div>
             </li>
           ))}
-          <li className="lab-card lab-card--next" data-reveal hidden={!match("net")}>
+          <li className="lab-card lab-card--next" data-reveal hidden={!onPage("next")}>
             <span className="origin origin--next">{t.nextStop}</span>
             <h3>{t.nextTitle}</h3>
             <p className="lab-card__text">{t.nextText}</p>
           </li>
         </ul>
+
+        {pages > 1 && (
+          <nav className="lab-pager" aria-label={t.labsTitle}>
+            <button type="button" className="lab-pager__arrow" onClick={() => goTo(page - 1)} disabled={page === 0} aria-label={t.pagePrev}>←</button>
+            {Array.from({ length: pages }, (_, p) => (
+              <button key={p} type="button" className="lab-pager__dot" onClick={() => goTo(p)} aria-current={p === page ? "page" : undefined} aria-label={t.pageN(p + 1)}>
+                {p + 1}
+              </button>
+            ))}
+            <button type="button" className="lab-pager__arrow" onClick={() => goTo(page + 1)} disabled={page === pages - 1} aria-label={t.pageNext}>→</button>
+          </nav>
+        )}
       </div>
     </section>
   );

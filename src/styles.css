@@ -342,6 +342,17 @@ code { font-family: var(--code); font-size: 0.9em; }
 .lab-filter__n { font-size: 0.78rem; font-variant-numeric: tabular-nums; opacity: 0.7; }
 .lab-filter + .lab-grid { margin-top: 1.25rem; }
 .lab-card[hidden] { display: none; }
+/* pager: 4 cards per page */
+.lab-pager { display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin-top: 1.75rem; }
+.lab-pager button {
+  font: 600 0.95rem/1 var(--font); color: var(--rock); cursor: pointer;
+  width: 44px; height: 44px; border-radius: 50%; display: inline-grid; place-items: center;
+  background: #fff; border: 1px solid var(--line); transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.lab-pager button:hover:not(:disabled) { border-color: var(--sea); }
+.lab-pager button[aria-current="page"] { background: var(--sea); border-color: var(--sea); color: var(--sea-ink); }
+.lab-pager button:disabled { opacity: 0.35; cursor: default; }
+.lab-pager__arrow { font-size: 1.1rem; }
 
 /* spotlight that follows the cursor (fine pointers only) */
 .lab-card { position: relative; isolation: isolate; }
