@@ -273,7 +273,7 @@ code { font-family: var(--code); font-size: 0.9em; }
 .intro { margin-top: 1rem; max-width: 30rem; color: var(--rock-dim); }
 
 /* ---------- labs: card grid ---------- */
-.labs-sec { padding: clamp(5rem, 12vh, 8rem) 0; }
+.labs-sec { padding: clamp(5rem, 12vh, 8rem) 0 clamp(2.5rem, 6vh, 4rem); }
 .labs-head { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 1rem clamp(2rem, 6vw, 6rem); align-items: end; }
 .labs-head .intro { max-width: 38rem; }
 .lab-grid {
@@ -365,9 +365,10 @@ code { font-family: var(--code); font-size: 0.9em; }
 
 
 /* ---------- interfaces: filmstrip ---------- */
-.strip-sec { padding: clamp(5rem, 12vh, 8rem) 0 clamp(3rem, 8vh, 5rem); background: var(--snow); }
-.strip-head { display: flex; justify-content: space-between; align-items: end; gap: 1rem; flex-wrap: wrap; }
-.marquee__controls { display: flex; justify-content: flex-end; margin-top: 1.5rem; }
+.strip-sec { padding: clamp(2.5rem, 6vh, 4rem) 0 clamp(1rem, 3vh, 2rem); background: var(--snow); }
+.strip-head { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 1rem clamp(2rem, 6vw, 6rem); align-items: end; }
+.strip-head .intro { max-width: 38rem; }
+.marquee__controls { display: flex; justify-content: flex-end; margin-top: 0.75rem; margin-bottom: 0.75rem; }
 .marquee__toggle {
   display: inline-flex; align-items: center; gap: 0.45rem; min-height: 44px; padding: 0 1rem;
   font: 600 0.9rem/1 var(--font); color: var(--night); background: none;
@@ -398,7 +399,7 @@ code { font-family: var(--code); font-size: 0.9em; }
 .frame .link { color: var(--sea); }
 
 /* ---------- toolbox: run-in type ---------- */
-.tools-sec { padding: clamp(3rem, 8vh, 5rem) 0 clamp(5rem, 12vh, 8rem); }
+.tools-sec { padding: clamp(2.5rem, 6vh, 4rem) 0 clamp(5rem, 12vh, 8rem); }
 .runin { margin-top: 2rem; max-width: 62rem; }
 .runin p {
   font-size: clamp(1.25rem, 2.3vw, 1.85rem); line-height: 1.4; letter-spacing: -0.015em; color: var(--rock-dim);
@@ -446,7 +447,7 @@ code { font-family: var(--code); font-size: 0.9em; }
   .viewer__tab { flex: none; grid-template-columns: auto; border-bottom: 0; border-right: 1px solid var(--night-2); padding: 0.8rem 1rem; }
   .viewer__tabtitle { display: none; }
   .viewer__tab[aria-selected="true"] { box-shadow: inset 0 -3px 0 var(--berry); }
-  .labs-head, .lab-grid { grid-template-columns: 1fr; }
+  .labs-head, .lab-grid, .strip-head { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   .top nav { display: none; }
