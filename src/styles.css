@@ -277,27 +277,85 @@ code { font-family: var(--code); font-size: 0.9em; }
 .title { font-size: clamp(2.1rem, 4.4vw, 3.4rem); line-height: 1.05; letter-spacing: -0.03em; color: var(--night); }
 .intro { margin-top: 1rem; max-width: 30rem; color: var(--rock-dim); }
 
-/* ---------- labs: marked trail ---------- */
-.trail-sec { padding: clamp(5rem, 12vh, 8rem) 0; }
-.trail-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(2rem, 6vw, 6rem); align-items: start; }
-.trail-intro { position: sticky; top: 3rem; }
-.trail { list-style: none; margin: 0; padding: 0; position: relative; }
-.trail::before {
-  content: ""; position: absolute; left: 19px; top: 1.5rem; bottom: 1.5rem; width: 2px;
-  background: repeating-linear-gradient(to bottom, var(--trail) 0 10px, transparent 10px 20px);
-  opacity: 0.55;
+/* ---------- labs: card grid ---------- */
+.labs-sec { padding: clamp(5rem, 12vh, 8rem) 0; }
+.labs-head { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 1rem clamp(2rem, 6vw, 6rem); align-items: end; }
+.labs-head .intro { max-width: 38rem; }
+.lab-grid {
+  list-style: none; margin: clamp(2.5rem, 5vh, 3.5rem) 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem;
 }
-.waypoint { position: relative; display: grid; grid-template-columns: 40px 1fr; gap: 1.5rem; padding: 1.25rem 0 2.25rem; }
-.t-mark {
-  width: 40px; height: 40px; padding: 4px; border-radius: 10px;
-  background: #d9dcd6; fill: var(--trail);
-  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.08);
-  position: relative; z-index: 1;
+.lab-card {
+  display: flex; flex-direction: column; align-items: flex-start;
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  transition: border-color 0.2s, box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
 }
-.waypoint h3 { font-size: clamp(1.35rem, 2.2vw, 1.75rem); line-height: 1.15; color: var(--night); }
-.waypoint p { margin-top: 0.5rem; color: var(--rock-dim); max-width: 36rem; }
-.waypoint .waypoint__tools { font-size: 0.92rem; color: var(--rock); }
-.waypoint .link { margin-top: 0.75rem; color: var(--sea); }
+.lab-card:hover { border-color: color-mix(in srgb, var(--sea) 40%, var(--line)); box-shadow: 0 14px 36px rgba(21, 63, 80, 0.10); transform: translateY(-2px); }
+.lab-card h3 { margin-top: 0.9rem; font-size: clamp(1.2rem, 1.8vw, 1.45rem); line-height: 1.2; color: var(--night); }
+.lab-card__text { margin-top: 0.5rem; color: var(--rock-dim); }
+.lab-card__foot { margin-top: auto; padding-top: 1rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1.5rem; width: 100%; }
+.lab-card__foot .link { color: var(--sea); }
+
+.origin {
+  display: inline-block; padding: 0.15rem 0.6rem; border-radius: 999px;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.01em; border: 1px solid currentColor;
+}
+.origin--own { color: var(--trail); background: color-mix(in srgb, var(--trail) 8%, transparent); }
+.origin--rebuilt { color: var(--sea); background: color-mix(in srgb, var(--sea) 8%, transparent); }
+.origin--master { color: var(--rock-dim); }
+.origin--next { color: var(--rock-dim); border-style: dashed; }
+
+.lab-card .metric { display: flex; align-items: baseline; gap: 0.6rem; margin-top: 1rem; color: var(--rock); }
+.metric strong {
+  font-size: clamp(2.4rem, 4vw, 3rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1;
+  color: var(--sea); font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.metric span { font-size: 0.92rem; font-weight: 500; line-height: 1.35; }
+
+.chips { list-style: none; margin: 0.9rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.chips li { font-size: 0.8rem; padding: 0.2rem 0.55rem; border-radius: 6px; background: var(--snow-2); color: var(--rock); }
+
+/* evidence: native disclosure, no script */
+.evidence { width: 100%; }
+.evidence[open] { flex-basis: 100%; }
+.evidence summary {
+  cursor: pointer; width: fit-content; font-weight: 600; color: var(--sea);
+  list-style: none; display: inline-flex; align-items: center; gap: 0.4rem; min-height: 44px;
+}
+.lab-card__foot .evidence:not([open]) { width: auto; }
+.evidence summary::-webkit-details-marker { display: none; }
+.evidence summary::before { content: "+"; display: inline-grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 50%; border: 1.5px solid currentColor; font-size: 0.9rem; line-height: 1; }
+.evidence[open] summary::before { content: "−"; }
+.evidence img { display: block; width: 100%; height: auto; margin-top: 0.5rem; border-radius: 10px; border: 1px solid var(--line); }
+
+/* filter: segmented buttons with counts */
+.lab-filter { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: clamp(2rem, 4vh, 2.75rem); }
+.lab-filter button {
+  font: 600 0.9rem/1 var(--font); color: var(--rock); cursor: pointer;
+  display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; padding: 0 1rem;
+  background: #fff; border: 1px solid var(--line); border-radius: 999px;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.lab-filter button:hover { border-color: var(--sea); }
+.lab-filter button[aria-pressed="true"] { background: var(--sea); border-color: var(--sea); color: var(--sea-ink); }
+.lab-filter__n { font-size: 0.78rem; font-variant-numeric: tabular-nums; opacity: 0.7; }
+.lab-filter + .lab-grid { margin-top: 1.25rem; }
+.lab-card[hidden] { display: none; }
+
+/* spotlight that follows the cursor (fine pointers only) */
+.lab-card { position: relative; isolation: isolate; }
+@media (hover: hover) and (pointer: fine) {
+  .lab-card:not(.lab-card--next)::before {
+    content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
+    background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 0%), color-mix(in srgb, var(--sea) 9%, transparent), transparent 70%);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .lab-card:hover::before { opacity: 1; }
+}
+.lab-card--next { background: transparent; border-style: dashed; align-self: stretch; justify-content: center; }
+.lab-card--next:hover { transform: none; box-shadow: none; }
+.lab-card--next h3 { color: var(--rock-dim); }
 
 /* ---------- builds: Swiss index on lichen ---------- */
 .lichen { background: var(--lichen); color: var(--lichen-ink); padding: clamp(5rem, 12vh, 8rem) 0; }
@@ -397,8 +455,7 @@ code { font-family: var(--code); font-size: 0.9em; }
   .viewer__tab { flex: none; grid-template-columns: auto; border-bottom: 0; border-right: 1px solid var(--night-2); padding: 0.8rem 1rem; }
   .viewer__tabtitle { display: none; }
   .viewer__tab[aria-selected="true"] { box-shadow: inset 0 -3px 0 var(--berry); }
-  .trail-grid { grid-template-columns: 1fr; }
-  .trail-intro { position: static; }
+  .labs-head, .lab-grid { grid-template-columns: 1fr; }
   .index__row { grid-template-columns: 1fr; gap: 0.6rem; }
   .index__meta { text-align: left; }
 }

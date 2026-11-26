@@ -157,6 +157,103 @@ function Activity({ lang, t, latest }) {
   );
 }
 
+/* Security labs: filter by area, count-up numbers, cursor spotlight.
+   Cards stay mounted and are hidden with the hidden attribute, so the reveal observer keeps working. */
+const AREAS = ["all", "net", "devsecops", "appsec"];
+const reducedMotion = () => window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+
+function Metric({ value, label }) {
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    const m = /^(\d+)(.*)$/.exec(value);
+    if (!el || !m || reducedMotion() || !("IntersectionObserver" in window)) return;
+    const target = Number(m[1]);
+    let raf = 0;
+    const io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      io.disconnect();
+      const t0 = performance.now();
+      const tick = (now) => {
+        const p = Math.min(1, (now - t0) / 900);
+        el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))) + m[2];
+        if (p < 1) raf = requestAnimationFrame(tick);
+      };
+      raf = requestAnimationFrame(tick);
+    }, { threshold: 0.6 });
+    io.observe(el);
+    return () => { io.disconnect(); cancelAnimationFrame(raf); };
+  }, [value]);
+  return (
+    <p className="metric">
+      <strong ref={ref} aria-hidden="true">{value}</strong>
+      <span className="sr-only">{value} </span>
+      <span>{label}</span>
+    </p>
+  );
+}
+
+const spotlight = (e) => {
+  const r = e.currentTarget.getBoundingClientRect();
+  e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
+  e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+};
+
+function Labs({ lang, t }) {
+  const [area, setArea] = useState("all");
+  const match = (a) => area === "all" || a === area;
+  const count = (a) => (a === "all" ? labs.length : labs.filter((l) => l.area === a).length);
+  const shown = labs.filter((l) => match(l.area)).length;
+
+  return (
+    <section className="labs-sec" id="labs" aria-labelledby="labs-title">
+      <div className="wrap">
+        <div className="labs-head">
+          <h2 id="labs-title" className="title">{t.labsTitle}</h2>
+          <p className="intro">{t.labsIntro}</p>
+        </div>
+
+        <div className="lab-filter" role="group" aria-label={t.filterLabel}>
+          {AREAS.map((a) => (
+            <button key={a} type="button" aria-pressed={area === a} onClick={() => setArea(a)}>
+              {t.areas[a]} <span className="lab-filter__n">{count(a)}</span>
+            </button>
+          ))}
+          <span className="sr-only" aria-live="polite">{t.showing(shown, labs.length)}</span>
+        </div>
+
+        <ul className="lab-grid">
+          {labs.map((l) => (
+            <li key={l.repo} className="lab-card" data-reveal hidden={!match(l.area)} onPointerMove={spotlight}>
+              <span className={`origin origin--${l.origin}`}>{t.origin[l.origin]}</span>
+              <Metric value={l.metric.value} label={l.metric[lang]} />
+              <h3>{l[lang].title}</h3>
+              <p className="lab-card__text">{l[lang].text}</p>
+              <ul className="chips" aria-label="Tools">
+                {l.tools.map((tool) => <li key={tool}>{tool}</li>)}
+              </ul>
+              <div className="lab-card__foot">
+                <Ext href={l.repo} className="link" t={t}>{t.repo}</Ext>
+                {l.evidence && (
+                  <details className="evidence">
+                    <summary>{t.evidence}</summary>
+                    <img src={l.evidence.src} alt={l.evidence.alt[lang]} width={l.evidence.w} height={l.evidence.h} loading="lazy" decoding="async" />
+                  </details>
+                )}
+              </div>
+            </li>
+          ))}
+          <li className="lab-card lab-card--next" data-reveal hidden={!match("net")}>
+            <span className="origin origin--next">{t.nextStop}</span>
+            <h3>{t.nextTitle}</h3>
+            <p className="lab-card__text">{t.nextText}</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+  );
+}
+
 /* Pick a pull request, see the actual diff. Tabs follow the WAI-ARIA pattern. */
 function DiffViewer({ lang, t }) {
   const [active, setActive] = useState(2);
@@ -350,29 +447,7 @@ export default function App() {
           </div>
         </section>
 
-        <section className="trail-sec" id="labs" aria-labelledby="labs-title">
-          <div className="wrap trail-grid">
-            <div className="trail-intro">
-              <h2 id="labs-title" className="title">{t.labsTitle}</h2>
-              <p className="intro">{t.labsIntro}</p>
-            </div>
-            <ol className="trail">
-              {labs.map((l) => (
-                <li key={l.repo} className="waypoint" data-reveal>
-                  <svg className="t-mark" viewBox="0 0 40 40" aria-hidden="true">
-                    <path d="M7 9.5c8.5-1.6 17.6-1.4 26.4.2l-.6 7.1c-3.1-.5-5.6-.7-8.1-.8l.6 17.4-8.3.3-.4-17.6c-2.6.1-5.3.3-8.2.8z" />
-                  </svg>
-                  <div>
-                    <h3>{l[lang].title}</h3>
-                    <p>{l[lang].text}</p>
-                    <p className="waypoint__tools">{l.tools.join(" / ")}</p>
-                    <Ext href={l.repo} className="link" t={t}>{t.repo}</Ext>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
+        <Labs lang={lang} t={t} />
 
         <section className="lichen" id="builds" aria-labelledby="builds-title">
           <div className="wrap">
