@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import contours from "./assets/contours.svg?raw";
 import portrait from "./assets/portrait.webp";
 import logo from "./assets/logo.svg";
@@ -520,6 +521,7 @@ export default function App() {
           <span>{t.foot}</span>
         </div>
       </footer>
+      <Analytics />
     </>
   );
 }
