@@ -195,18 +195,18 @@ export const ui = {
 export const tracks = {
   nb: [
     { title: "IT-drift og sikkerhet", text: "Microsoft 365, Entra ID, Intune og Autopilot i daglig drift. Skyinfrastruktur som kode, sikret og kontrollert i CI." },
-    { title: "Frontend og mobil", text: "React- og React Native-apper med ekte betaling og innlogging, og nettsider som henter sanntidsdata fra API-er." },
-    { title: "UX/UI", text: "Grensesnitt designet i Figma, mobil først, laget slik at folk forstår dem uten bruksanvisning." },
+    { title: "Full stack-utvikling", text: "React og React Native i frontend, API-er og serverløse funksjoner i backend. Innlogging, betaling og sanntidsdata fra eksterne API-er." },
+    { title: "Data og analyse", text: "Datamodeller og rapporter i Power BI, dataanalyse med Python og spørringer i SQL." },
   ],
   uk: [
     { title: "IT-експлуатація та безпека", text: "Microsoft 365, Entra ID, Intune і Autopilot у щоденній роботі. Хмарна інфраструктура як код, захищена й перевірена в CI." },
-    { title: "Фронтенд і мобільна розробка", text: "Застосунки на React і React Native зі справжніми платежами та входом, і сайти, що беруть живі дані з API." },
-    { title: "UX/UI", text: "Інтерфейси, спроєктовані у Figma: спершу для мобільних і так, щоб їх розуміли без інструкції." },
+    { title: "Full stack-розробка", text: "React і React Native на фронтенді, API та серверлес-функції на бекенді. Вхід, платежі й живі дані із зовнішніх API." },
+    { title: "Дані та аналітика", text: "Моделі даних і звіти в Power BI, аналіз даних на Python і запити SQL." },
   ],
   en: [
     { title: "IT Operations & Security", text: "Microsoft 365, Entra ID, Intune and Autopilot in daily operations. Cloud infrastructure as code, hardened and checked in CI." },
-    { title: "Front-End & Mobile", text: "React and React Native apps with real payments and sign-in, and websites that pull live data from APIs." },
-    { title: "UX/UI", text: "Interfaces designed in Figma, mobile first, built so people understand them without a manual." },
+    { title: "Full-Stack Development", text: "React and React Native on the front end, APIs and serverless functions on the back end. Sign-in, payments and live data from external APIs." },
+    { title: "Data & Analytics", text: "Data models and reports in Power BI, data analysis in Python and SQL queries." },
   ],
 };
 
