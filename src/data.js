@@ -524,14 +524,14 @@ export const labs = [
     en: { title: "API security assessment: OWASP Juice Shop", text: "Report with an executive summary: SQL injection, IDOR, a missing role check, mass assignment and a password hash in the JWT, with fixes ordered by priority." },
   },
   {
-    repo: "https://github.com/tobolovskaya/secure-arch-lab",
+    repo: "https://github.com/tobolovskaya/secure-architecture-review",
     area: "appsec",
-    origin: "master",
-    metric: { value: "5", nb: "arkitekturproblemer med forslag til løsning", uk: "архітектурних проблем із рішеннями", en: "architecture issues with proposed fixes" },
-    tools: ["FastAPI", "Semgrep", "Kubernetes", "Terraform"],
-    nb: { title: "Gjennomgang av sikker arkitektur", text: "Arkitekturrapport for en FastAPI-tjeneste: hva skannere ikke ser og hvorfor, med forbedringer for typing, validering og utrulling." },
-    uk: { title: "Аналіз безпечної архітектури", text: "Архітектурний звіт для сервісу на FastAPI: що пропускають сканери і чому, з виправленнями для типізації, валідації та розгортання." },
-    en: { title: "Secure architecture review", text: "Architecture report for a FastAPI service: what scanners miss and why, with fixes for typing, validation and deployment." },
+    origin: "rebuilt",
+    metric: { value: "6 av 10", nb: "funn som bare manuell gjennomgang fant, ikke skannerne", uk: "проблем знайшов лише ручний review, а не сканери", en: "findings only the manual review caught, not the scanners" },
+    tools: ["FastAPI", "Checkov", "hadolint", "Kubernetes", "Terraform"],
+    nb: { title: "Gjennomgang av sikker arkitektur", text: "En FastAPI-tjeneste gjennomgått i fem lag: kode, Dockerfile, CI, Kubernetes og Terraform. Checkov gikk fra 24 til 0 funn, og CI beviser både før og etter." },
+    uk: { title: "Аналіз безпечної архітектури", text: "Сервіс на FastAPI, перевірений у п'яти шарах: код, Dockerfile, CI, Kubernetes і Terraform. Checkov: з 24 до 0 знахідок, CI перевіряє і «до», і «після»." },
+    en: { title: "Secure architecture review", text: "A FastAPI service reviewed across five layers: code, Dockerfile, CI, Kubernetes and Terraform. Checkov went from 24 to 0 findings, and CI proves both before and after." },
   },
 ];
 
