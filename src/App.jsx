@@ -160,7 +160,7 @@ function Activity({ lang, t, latest }) {
 
 /* Security labs: filter by area, count-up numbers, cursor spotlight.
    Cards stay mounted and are hidden with the hidden attribute, so the reveal observer keeps working. */
-const AREAS = ["all", "net", "devsecops", "appsec"];
+const AREAS = ["all", "net", "soc", "devsecops", "appsec"];
 const reducedMotion = () => window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
 function Metric({ value, label }) {
