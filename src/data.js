@@ -1,4 +1,5 @@
 import pingEvidence from "./assets/evidence/network-ping.webp";
+import firewallEvidence from "./assets/evidence/firewall-dmz-log.webp";
 import failFastEvidence from "./assets/evidence/devsecops-fail-fast.webp";
 import travelTrucks from "./assets/projects/TravelTrucks.webp";
 import foodies from "./assets/projects/foodies.webp";
@@ -481,6 +482,17 @@ export const labs = [
     nb: { title: "Segmentert kontornett med VLAN og ACL", text: "Tre VLAN, trunk mellom svitsjer og router-on-a-stick. En utvidet ACL gir gjester internett, men stenger dem ute fra servere og ansatte, bevist med ping og ACL-tellere." },
     uk: { title: "Сегментована офісна мережа з VLAN і ACL", text: "Три VLAN, trunk між комутаторами й router-on-a-stick. Розширений ACL дає гостям інтернет, але не пускає до серверів і працівників, що підтверджено ping і лічильниками ACL." },
     en: { title: "Segmented office network with VLANs and ACL", text: "Three VLANs, trunks between switches and router-on-a-stick. An extended ACL lets guests out to the internet but keeps them away from servers and staff, proven with ping and ACL counters." },
+  },
+  {
+    repo: "https://github.com/tobolovskaya/firewall-lab",
+    area: "net",
+    origin: "own",
+    metric: { value: "11", nb: "tester av brannmurregler, hver bekreftet i loggen", uk: "тестів правил фаєрвола, кожен підтверджено в лозі", en: "firewall rule tests, each confirmed in the log" },
+    evidence: { src: firewallEvidence, w: 1200, h: 144, alt: { nb: "OPNsense-logg: DMZ til LAN blokkert med egen regel, LAN til DMZ og oppdateringer på 443 tillatt", uk: "Лог OPNsense: DMZ → LAN заблоковано власним правилом, LAN → DMZ і оновлення на 443 дозволено", en: "OPNsense log: DMZ to LAN blocked by its own rule, LAN to DMZ and updates on 443 allowed" } },
+    tools: ["OPNsense", "WireGuard", "DMZ", "UTM", "tcpdump"],
+    nb: { title: "Brannmur med DMZ og WireGuard i OPNsense", text: "LAN, DMZ og WAN på hver sin svitsj, regler etter minste privilegium og WireGuard-VPN kun til LAN. DMZ når verken LAN eller brannmuren, og bare 80/443 ut for oppdateringer." },
+    uk: { title: "Фаєрвол з DMZ і WireGuard на OPNsense", text: "LAN, DMZ і WAN на окремих світчах, правила за принципом least privilege і WireGuard VPN лише до LAN. DMZ не дістається ні до LAN, ні до фаєрвола, а назовні виходить тільки на 80/443 для оновлень." },
+    en: { title: "OPNsense firewall with DMZ and WireGuard", text: "LAN, DMZ and WAN on separate switches, least-privilege rules and a WireGuard VPN to the LAN only. The DMZ reaches neither the LAN nor the firewall, and goes out only on 80/443 for updates." },
   },
   {
     repo: "https://github.com/tobolovskaya/kql-detections",
